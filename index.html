@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amitabh Srivastava for Ward 7 — family-focused leadership, fiscal responsibility, and community-first policies.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <title>Amitabh Srivastava | Councillor Candidate - Ward 7, Mississauga</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top bar -->
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-left">Ward 7, Mississauga</div>
+            <div class="topbar-right">
+                <a href="mailto:your.email@example.com">your.email@example.com</a>
+                <a href="https://mississauga.ca/election" target="_blank" rel="noopener noreferrer">Election Info</a>
+            </div>
+        </div>
+    </div>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>Amitabh Srivastava</h1>
+                    <p class="tagline">Councillor Candidate, Ward 7, Mississauga</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#platform">Platform</a></li>
+                    <li><a href="#feedback">Contact</a></li>
+                </ul>
+                <div class="header-ctas">
+                    <button class="btn btn-outline" type="button" data-modal="volunteerModal">Volunteer</button>
+                    <button class="btn btn-donate" type="button" data-modal="donateModal">Donate</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <h2>Building a Stronger Ward 7</h2>
+                    <p>Dedicated to serving our families and community with integrity and experience</p>
+                    <p class="election-link">Important: Learn about Mississauga's election — <a href="https://mississauga.ca/election" target="_blank" rel="noopener noreferrer">mississauga.ca/election</a></p>
+                    <a href="#feedback" class="btn btn-primary">Get In Touch</a>
+                </div>
+                <div class="hero-visual">
+                    <img src="candidate-photo.jpg" alt="Amitabh Srivastava with Mississauga election banner" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updates / Events Section -->
+    <section id="updates" class="updates">
+        <div class="container">
+            <h2>Updates & Events</h2>
+            <div class="updates-grid">
+                <div class="update-card">
+                    <h4>Community Meet & Greet</h4>
+                    <p><strong>July 12</strong> — Join us at the community centre to discuss local priorities.</p>
+                </div>
+                <div class="update-card">
+                    <h4>Town Hall: Infrastructure</h4>
+                    <p><strong>August 3</strong> — Public forum on roads and transit improvements.</p>
+                </div>
+                <div class="update-card">
+                    <h4>Volunteer Drive</h4>
+                    <p><strong>Ongoing</strong> — Join our team to help canvass and phonebank.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modalOverlay" hidden></div>
+
+    <!-- Volunteer Modal -->
+    <div class="modal" id="volunteerModal" role="dialog" aria-modal="true" aria-labelledby="volunteerTitle" hidden>
+        <div class="modal-inner">
+            <div class="modal-header">
+                <h3 id="volunteerTitle">Volunteer with Amitabh</h3>
+                <button class="modal-close" data-close aria-label="Close">×</button>
+            </div>
+            <form id="volunteerForm" class="modal-form">
+                <div class="form-group">
+                    <label for="v-name">Full Name *</label>
+                    <input type="text" id="v-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="v-email">Email Address *</label>
+                    <input type="email" id="v-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="v-phone">Phone Number (Optional)</label>
+                    <input type="tel" id="v-phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="v-message">How would you like to help?</label>
+                    <textarea id="v-message" name="message" rows="4" placeholder="Canvassing, phonebanking, events..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <p class="modal-notice" id="volunteerNotice" style="display:none;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Donate Modal -->
+    <div class="modal" id="donateModal" role="dialog" aria-modal="true" aria-labelledby="donateTitle" hidden>
+        <div class="modal-inner">
+            <div class="modal-header">
+                <h3 id="donateTitle">Support the Campaign</h3>
+                <button class="modal-close" data-close aria-label="Close">×</button>
+            </div>
+            <div class="modal-body">
+                <p>You can support the campaign via Interac e-Transfer to:</p>
+                <p class="donate-email"><strong id="interacEmail">donations@amitabhsrivastava.ca</strong></p>
+                <div class="donate-actions">
+                    <button id="copyDonateEmail" class="btn btn-outline" type="button">Copy Email</button>
+                    <a id="mailtoDonate" class="btn btn-donate" href="mailto:donations@amitabhsrivastava.ca?subject=Interac%20e-Transfer%20Donation" target="_blank" rel="noopener noreferrer">Email to Donate</a>
+                </div>
+                <p class="donate-note">Please include your name and address in the e-Transfer message for receipting if applicable.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>With over [X] years as a dedicated realtor in Mississauga, I've built my career on trust, integrity, and understanding what families in our community truly need. I've served countless residents, helping them find their homes and build their futures here in Ward 7.</p>
+                    
+                    <p>As a family man rooted in this community, I understand the challenges middle-class families face—rising property taxes, inadequate public services, and the need for thoughtful development. These aren't just policy issues to me; they're personal.</p>
+                    
+                    <p>I'm running for Councillor because I believe our ward deserves representation that listens, acts with transparency, and fights for what matters to you and your family.</p>
+                </div>
+                <div class="values">
+                    <h3>Core Values</h3>
+                    <ul class="values-list">
+                        <li><strong>Family First:</strong> Decisions that protect our communities</li>
+                        <li><strong>Transparency:</strong> Open and honest communication</li>
+                        <li><strong>Accountability:</strong> Following through on commitments</li>
+                        <li><strong>Growth:</strong> Smart development that preserves character</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section id="platform" class="platform">
+        <div class="container">
+            <h2>My Platform</h2>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <h3>🏠 Affordable Housing</h3>
+                    <p>Ensuring our young families and growing households can afford to stay in Ward 7</p>
+                </div>
+                <div class="platform-card">
+                    <h3>🛣️ Smart Infrastructure</h3>
+                    <p>Better roads, transit, and public services that meet our community's needs</p>
+                </div>
+                <div class="platform-card">
+                    <h3>👨‍👩‍👧‍👦 Community Safety</h3>
+                    <p>Supporting policing and community programs that keep families safe</p>
+                </div>
+                <div class="platform-card">
+                    <h3>💰 Fiscal Responsibility</h3>
+                    <p>Smart spending that delivers value for your tax dollar</p>
+                </div>
+                <div class="platform-card">
+                    <h3>🌳 Green Spaces</h3>
+                    <p>Parks and recreational facilities for families to enjoy together</p>
+                </div>
+                <div class="platform-card">
+                    <h3>📞 Open Doors</h3>
+                    <p>Your councillor who is accessible and responsive to your concerns</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="feedback">
+        <div class="container">
+            <h2>Share Your Feedback</h2>
+            <p class="section-subtitle">Your voice matters. Tell me what matters most to you and Ward 7.</p>
+            
+            <form class="feedback-form" id="feedbackForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">What's your main concern? *</label>
+                    <select id="topic" name="topic" required>
+                        <option value="">-- Select a topic --</option>
+                        <option value="housing">Housing & Affordability</option>
+                        <option value="infrastructure">Roads & Infrastructure</option>
+                        <option value="safety">Community Safety</option>
+                        <option value="taxes">Taxes & Spending</option>
+                        <option value="schools">Schools & Education</option>
+                        <option value="parks">Parks & Recreation</option>
+                        <option value="transit">Public Transit</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message or Feedback *</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Share your thoughts, concerns, or ideas..." required></textarea>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="contact" name="contact">
+                    <label for="contact">I'd like to be contacted about this issue</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                <p class="form-notice" id="formNotice" style="display: none;"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:amitabh.srivastava@gmail.com">amitabh.srivastava@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+1-905-555-5555">+1 (905) 555-5555</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Location</h4>
+                    <p>Ward 7, Mississauga<br>Ontario, Canada</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow</h4>
+                    <p>
+                        <a href="https://www.facebook.com/amitabh7000" target="_blank" rel="noopener noreferrer">Facebook</a> | 
+                        <a href="https://twitter.com/amitabh7000" target="_blank" rel="noopener noreferrer">Twitter</a> | 
+                        <a href="https://www.linkedin.com/in/amitabh-srivastava-957571297/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Campaign for Ward 7. Authorized by Amitabh Srivastava.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
