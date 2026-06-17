@@ -6,53 +6,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const feedbackForm = document.getElementById('feedbackForm');
     const formNotice = document.getElementById('formNotice');
 
-    // Handle form submission
+    // Handle feedback form submission
     feedbackForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            topic: document.getElementById('topic').value,
-            message: document.getElementById('message').value.trim(),
-            wantContact: document.getElementById('contact').checked,
-            timestamp: new Date().toISOString()
-        };
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const topic = document.getElementById('topic').value;
+        const message = document.getElementById('message').value.trim();
 
         // Validation
-        if (!formData.name || !formData.email || !formData.topic || !formData.message) {
+        if (!name || !email || !topic || !message) {
             showFormNotice('Please fill in all required fields.', 'error');
             return;
         }
 
         // Email validation
-        if (!isValidEmail(formData.email)) {
+        if (!isValidEmail(email)) {
             showFormNotice('Please enter a valid email address.', 'error');
             return;
         }
 
-        // In a real application, you would send this data to a server
-        // For now, we'll store it in localStorage as a demo
-        saveFeedback(formData);
+        // Show submitting message
+        showFormNotice('Submitting your feedback...', 'success');
         
-        // Show success message
-        showFormNotice(
-            '✓ Thank you for your feedback! We will review your message and respond shortly if you requested contact.',
-            'success'
-        );
-
-        // Reset form
-        feedbackForm.reset();
-
-        // Scroll to notice
-        formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        // Hide notice after 5 seconds
+        // Submit the form via hidden iframe
+        feedbackForm.target = 'feedbackTarget';
+        feedbackForm.submit();
+        
+        // Reset and show success message
         setTimeout(() => {
-            formNotice.style.display = 'none';
-        }, 5000);
+            showFormNotice('✓ Thank you for your feedback! Your submission has been recorded.', 'success');
+            feedbackForm.reset();
+            formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            setTimeout(() => {
+                formNotice.style.display = 'none';
+            }, 5000);
+        }, 1000);
     });
 
     // Smooth scrolling for navigation links
@@ -126,6 +117,9 @@ function saveFeedback(formData) {
     */
 }
 
+/**
+ * Submit feedback to the Google Apps Script web app
+ */
 /**
  * Animate elements as they come into view
  */
@@ -231,8 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const name = document.getElementById('v-name').value.trim();
             const email = document.getElementById('v-email').value.trim();
-            const phone = document.getElementById('v-phone').value.trim();
-            const message = document.getElementById('v-message').value.trim();
 
             if (!name || !email) {
                 volunteerNotice.textContent = 'Please provide name and email.';
@@ -248,21 +240,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const payload = { name, email, phone, message, timestamp: new Date().toISOString() };
-            let volunteers = JSON.parse(localStorage.getItem('campaignVolunteers')) || [];
-            volunteers.push(payload);
-            localStorage.setItem('campaignVolunteers', JSON.stringify(volunteers));
-
-            volunteerNotice.textContent = '✓ Thanks — we will be in touch soon.';
+            // Show submitting message
+            volunteerNotice.textContent = 'Submitting your information...';
             volunteerNotice.className = 'modal-notice success';
             volunteerNotice.style.display = 'block';
-            volunteerForm.reset();
 
+            // Submit the form via hidden iframe
+            volunteerForm.target = 'volunteerTarget';
+            volunteerForm.submit();
+
+            // Show success and reset
             setTimeout(() => {
-                volunteerNotice.style.display = 'none';
-                const modal = document.getElementById('volunteerModal');
-                closeModal(modal);
-            }, 2500);
+                volunteerNotice.textContent = '✓ Thanks for volunteering! We will be in touch soon.';
+                volunteerNotice.className = 'modal-notice success';
+                volunteerNotice.style.display = 'block';
+                volunteerForm.reset();
+
+                setTimeout(() => {
+                    volunteerNotice.style.display = 'none';
+                    const modal = document.getElementById('volunteerModal');
+                    closeModal(modal);
+                }, 2500);
+            }, 1000);
         });
     }
 

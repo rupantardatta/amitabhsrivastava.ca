@@ -90,7 +90,7 @@
                 <h3 id="volunteerTitle">Volunteer with Amitabh</h3>
                 <button class="modal-close" data-close aria-label="Close">×</button>
             </div>
-            <form id="volunteerForm" class="modal-form">
+            <form id="volunteerForm" class="modal-form" action="https://script.google.com/macros/s/AKfycbw1zXYwCePsrsqPkYo77Ig6Fp-FGESQ9w3wkT57f1pFzqtyTl5M5Hrr0dj7OsSI3Vns8w/exec" method="POST" target="volunteerTarget">
                 <div class="form-group">
                     <label for="v-name">Full Name *</label>
                     <input type="text" id="v-name" name="name" required>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="form-group">
                     <label for="v-message">How would you like to help?</label>
-                    <textarea id="v-message" name="message" rows="4" placeholder="Canvassing, phonebanking, events..."></textarea>
+                    <textarea id="v-message" name="message" rows="4" placeholder="Canvassing, phonebanking, events..." name="helpInterest"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
                 <p class="modal-notice" id="volunteerNotice" style="display:none;"></p>
@@ -208,7 +208,7 @@
             <h2>Share Your Feedback</h2>
             <p class="section-subtitle">Your voice matters. Tell me what matters most to you and Ward 7.</p>
             
-            <form class="feedback-form" id="feedbackForm">
+            <form class="feedback-form" id="feedbackForm" action="https://script.google.com/macros/s/AKfycbw1zXYwCePsrsqPkYo77Ig6Fp-FGESQ9w3wkT57f1pFzqtyTl5M5Hrr0dj7OsSI3Vns8w/exec" method="POST" target="feedbackTarget">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -282,6 +282,10 @@
             </div>
         </div>
     </footer>
+
+    <!-- Hidden iframes for form submissions -->
+    <iframe name="volunteerTarget" id="volunteerTarget" style="display:none;"></iframe>
+    <iframe name="feedbackTarget" id="feedbackTarget" style="display:none;"></iframe>
 
     <script src="script.js"></script>
 </body>
