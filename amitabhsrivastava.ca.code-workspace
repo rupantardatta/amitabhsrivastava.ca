@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../personal/kutumb"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "amitabhsrivastava.ca"
+	}
+}
