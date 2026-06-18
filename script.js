@@ -5,6 +5,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     const feedbackForm = document.getElementById('feedbackForm');
     const formNotice = document.getElementById('formNotice');
+    const feedbackTarget = document.getElementById('feedbackTarget');
+    let feedbackSubmitting = false;
+
+    feedbackTarget.addEventListener('load', function() {
+        if (!feedbackSubmitting) return;
+        feedbackSubmitting = false;
+        showFormNotice('✓ Thank you for your feedback! Your submission has been recorded.', 'success');
+        feedbackForm.reset();
+        formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => { formNotice.style.display = 'none'; }, 5000);
+    });
 
     // Handle feedback form submission
     feedbackForm.addEventListener('submit', function(e) {
@@ -27,23 +38,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Show submitting message
         showFormNotice('Submitting your feedback...', 'success');
-        
-        // Submit the form via hidden iframe
+        document.getElementById('f-submittedAt').value = new Date().toISOString();
+        feedbackSubmitting = true;
         feedbackForm.target = 'feedbackTarget';
         feedbackForm.submit();
-        
-        // Reset and show success message
+
         setTimeout(() => {
-            showFormNotice('✓ Thank you for your feedback! Your submission has been recorded.', 'success');
-            feedbackForm.reset();
-            formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            setTimeout(() => {
-                formNotice.style.display = 'none';
-            }, 5000);
-        }, 1000);
+            if (feedbackSubmitting) {
+                feedbackSubmitting = false;
+                showFormNotice('There was a problem submitting feedback. Please try again or contact us directly.', 'error');
+            }
+        }, 10000);
     });
 
     // Smooth scrolling for navigation links
@@ -220,6 +226,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Volunteer form handling
     const volunteerForm = document.getElementById('volunteerForm');
     const volunteerNotice = document.getElementById('volunteerNotice');
+    const volunteerTarget = document.getElementById('volunteerTarget');
+    let volunteerSubmitting = false;
+
+    volunteerTarget.addEventListener('load', function() {
+        if (!volunteerSubmitting) return;
+        volunteerSubmitting = false;
+        volunteerNotice.textContent = '✓ Thanks for volunteering! We will be in touch soon.';
+        volunteerNotice.className = 'modal-notice success';
+        volunteerNotice.style.display = 'block';
+        volunteerForm.reset();
+
+        setTimeout(() => {
+            volunteerNotice.style.display = 'none';
+            const modal = document.getElementById('volunteerModal');
+            closeModal(modal);
+        }, 2500);
+    });
+
     if (volunteerForm) {
         volunteerForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -240,28 +264,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Show submitting message
             volunteerNotice.textContent = 'Submitting your information...';
             volunteerNotice.className = 'modal-notice success';
             volunteerNotice.style.display = 'block';
+            document.getElementById('v-submittedAt').value = new Date().toISOString();
 
-            // Submit the form via hidden iframe
+            volunteerSubmitting = true;
             volunteerForm.target = 'volunteerTarget';
             volunteerForm.submit();
 
-            // Show success and reset
             setTimeout(() => {
-                volunteerNotice.textContent = '✓ Thanks for volunteering! We will be in touch soon.';
-                volunteerNotice.className = 'modal-notice success';
-                volunteerNotice.style.display = 'block';
-                volunteerForm.reset();
-
-                setTimeout(() => {
-                    volunteerNotice.style.display = 'none';
-                    const modal = document.getElementById('volunteerModal');
-                    closeModal(modal);
-                }, 2500);
-            }, 1000);
+                if (volunteerSubmitting) {
+                    volunteerSubmitting = false;
+                    volunteerNotice.textContent = 'There was a problem submitting your volunteer request. Please try again or contact us directly.';
+                    volunteerNotice.className = 'modal-notice error';
+                }
+            }, 10000);
         });
     }
 
