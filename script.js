@@ -3,6 +3,35 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // ============================================
+    // HAMBURGER MENU TOGGLE
+    // ============================================
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.navbar')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+
     const feedbackForm = document.getElementById('feedbackForm');
     const formNotice = document.getElementById('formNotice');
     const feedbackTarget = document.getElementById('feedbackTarget');

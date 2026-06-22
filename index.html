@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Top bar -->
-    <div class="topbar">
+    <!--<div class="topbar">
         <div class="container">
             <div class="topbar-left">Ward 7, Mississauga</div>
             <div class="topbar-right">
@@ -18,7 +18,7 @@
                 <a href="https://mississauga.ca/election" target="_blank" rel="noopener noreferrer">Election Info</a>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Header & Navigation -->
     <header class="header">
         <nav class="navbar">
@@ -27,7 +27,12 @@
                     <h1>Amitabh Srivastava</h1>
                     <p class="tagline">Councillor Candidate, Ward 7, Mississauga</p>
                 </div>
-                <ul class="nav-menu">
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#platform">Platform</a></li>
@@ -126,8 +131,8 @@
                 <p>You can support the campaign via Interac e-Transfer to:</p>
                 <p class="donate-email"><strong id="interacEmail">donations@amitabhsrivastava.ca</strong></p>
                 <div class="donate-actions">
-                    <button id="copyDonateEmail" class="btn btn-outline" type="button">Copy Email</button>
                     <a id="mailtoDonate" class="btn btn-donate" href="mailto:donations@amitabhsrivastava.ca?subject=Interac%20e-Transfer%20Donation" target="_blank" rel="noopener noreferrer">Email to Donate</a>
+                    <button id="copyDonateEmail" class="btn btn-outline" type="button">Copy Email</button>
                 </div>
                 <p class="donate-note">Please include your name and address in the e-Transfer message for receipting if applicable.</p>
             </div>
@@ -145,7 +150,17 @@
                     <p>I am a husband, father of two daughters, entrepreneur, small business owner, businessman, real estate professional, and proud first-generation Canadian.</p>
 
                     <p>More than two decades ago, I came to Canada seeking opportunity, safety, and a better future for the family I hoped to build. Like many newcomers, my journey was not always easy. I worked hard, adapted to new challenges, made difficult decisions, and learned firsthand the value of perseverance, community, and opportunity.</p>
-
+                </div>
+                <div class="values">
+                    <h3>Core Values</h3>
+                    <ul class="values-list">
+                        <li><strong>Family First:</strong> Decisions that protect our communities</li>
+                        <li><strong>Transparency:</strong> Open and honest communication</li>
+                        <li><strong>Accountability:</strong> Following through on commitments</li>
+                        <li><strong>Growth:</strong> Smart development that preserves character</li>
+                    </ul>
+                </div>
+                <div class="about-text">
                     <p>I was born into a family with a strong tradition of public service, education, and community contribution. My father, who came from a farming background, dedicated his career to public service and was recognized with a Presidential Medal for excellence in duty. Those values of integrity, service, and responsibility have guided me throughout my life and continue to inspire me today.</p>
 
                     <p>Over the years, I have built a diverse career that has given me a unique understanding of the challenges and opportunities facing residents. I have worked in retail sales and management, public transit, entrepreneurship, restaurant ownership, and real estate. As an entrepreneur and small business owner, I understand the risks, sacrifices, and determination required to build and sustain a business. As a real estate professional, I work closely with families, homeowners, newcomers, and business owners, helping them navigate some of the most important decisions of their lives.</p>
@@ -157,18 +172,7 @@
                     <p>Throughout my career, I have consistently focused on improving systems, simplifying processes, communicating clearly, and finding practical ways to make better use of available resources. I believe government should work the same way—listening to residents, responding to their needs, and delivering value for taxpayers.</p>
 
                     <p>I am running for Ward 7 Councillor because I believe our city deserves leadership that is accessible, accountable, and focused on practical solutions. I want to help build a City Hall that listens to residents, spends taxpayer dollars responsibly, and supports strong communities where families, seniors, newcomers, and businesses can thrive.</p>
-
-                    <p>Mississauga has given my family incredible opportunities. Running for Ward 7 Councillor is my opportunity to give back and help build an even stronger future for our community.</p>
-                </div>
-                <div class="values">
-                    <h3>Core Values</h3>
-                    <ul class="values-list">
-                        <li><strong>Family First:</strong> Decisions that protect our communities</li>
-                        <li><strong>Transparency:</strong> Open and honest communication</li>
-                        <li><strong>Accountability:</strong> Following through on commitments</li>
-                        <li><strong>Growth:</strong> Smart development that preserves character</li>
-                    </ul>
-                </div>
+                </div>  
             </div>
         </div>
     </section>
@@ -272,11 +276,25 @@
                 </div>
                 <div class="footer-section">
                     <h4>Follow</h4>
-                    <p>
-                        <a href="https://www.facebook.com/amitabh7000" target="_blank" rel="noopener noreferrer">Facebook</a> | 
-                        <a href="https://www.instagram.com/amitabh7000?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a> | 
-                        <a href="https://www.linkedin.com/in/amitabh-srivastava-957571297/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/amitabh7000" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="#1877F2">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/amitabh7000?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="#E4405F">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/amitabh-srivastava-957571297/" target="_blank" rel="noopener noreferrer" aria-label="Connect on LinkedIn">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="#0A66C2">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="footer-section">
+                        <a href="https://mississauga.ca/election" target="_blank" rel="noopener noreferrer">Election Info</a>                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
