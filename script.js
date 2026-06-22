@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
         const topic = document.getElementById('topic').value;
         const message = document.getElementById('message').value.trim();
 
@@ -64,6 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Email validation
         if (!isValidEmail(email)) {
             showFormNotice('Please enter a valid email address.', 'error');
+            return;
+        }
+
+        // Phone validation (if provided)
+        if (phone && !isValidPhoneNumber(phone)) {
+            showFormNotice('Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).', 'error');
             return;
         }
 
@@ -108,6 +115,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+/**
+ * Validate phone number format
+ * Accepts formats: (123) 456-7890, 123-456-7890, 1234567890, +1-123-456-7890, +1 (123) 456-7890
+ */
+function isValidPhoneNumber(phone) {
+    const phoneRegex = /^[\+]?[1]?[\s\.\-\(\)]?([0-9]{3})[\s\.\-\(\)]?([0-9]{3})[\s\.\-]?([0-9]{4})$/;
+    return phoneRegex.test(phone.replace(/\s/g, ''));
 }
 
 /**
@@ -278,6 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const name = document.getElementById('v-name').value.trim();
             const email = document.getElementById('v-email').value.trim();
+            const phone = document.getElementById('v-phone').value.trim();
 
             if (!name || !email) {
                 volunteerNotice.textContent = 'Please provide name and email.';
@@ -288,6 +305,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (!isValidEmail(email)) {
                 volunteerNotice.textContent = 'Please enter a valid email address.';
+                volunteerNotice.className = 'modal-notice error';
+                volunteerNotice.style.display = 'block';
+                return;
+            }
+
+            if (phone && !isValidPhoneNumber(phone)) {
+                volunteerNotice.textContent = 'Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).';
                 volunteerNotice.className = 'modal-notice error';
                 volunteerNotice.style.display = 'block';
                 return;
