@@ -1,5 +1,11 @@
 window.galleryMedia = [
   {
+    "name": "5ccd37ff-50a8-487a-ac36-66fad48f1f9a.JPG",
+    "path": "media/5ccd37ff-50a8-487a-ac36-66fad48f1f9a.JPG",
+    "type": "image",
+    "modifiedAt": "2026-07-29T22:20:24"
+  },
+  {
     "name": "708b6751-f191-4bca-a742-474610d09a4c.JPG",
     "path": "media/708b6751-f191-4bca-a742-474610d09a4c.JPG",
     "type": "image",
