@@ -105,9 +105,177 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Gallery loading
+    loadGallery();
+    setupLightbox();
+
     // Add animation to platform cards on scroll
     observeElementsOnScroll();
 });
+
+function loadGallery() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    const galleryStatus = document.getElementById('galleryStatus');
+
+    if (!galleryGrid) return;
+
+    const mediaFiles = Array.isArray(window.galleryMedia) ? window.galleryMedia : [];
+    galleryGrid.innerHTML = '';
+
+    if (!mediaFiles.length) {
+        galleryStatus.textContent = 'No media has been added yet.';
+        galleryGrid.innerHTML = '<div class="gallery-empty">Drop photos or videos into the media folder to populate this gallery.</div>';
+        return;
+    }
+
+    galleryStatus.textContent = `${mediaFiles.length} item${mediaFiles.length === 1 ? '' : 's'} available`;
+
+    mediaFiles.forEach((item) => {
+        const card = document.createElement('article');
+        card.className = 'gallery-card';
+        card.dataset.item = JSON.stringify(item);
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+
+        if (item.type === 'video') {
+            const video = document.createElement('video');
+            video.className = 'gallery-media';
+            video.src = `./${item.path}`;
+            video.controls = true;
+            video.preload = 'metadata';
+            video.setAttribute('playsinline', '');
+            card.appendChild(video);
+        } else {
+            const image = document.createElement('img');
+            image.className = 'gallery-media';
+            image.src = `./${item.path}`;
+            image.alt = item.name;
+            card.appendChild(image);
+        }
+
+        const body = document.createElement('div');
+        body.className = 'gallery-card-body';
+
+        const meta = document.createElement('p');
+        meta.className = 'gallery-card-meta';
+        meta.textContent = new Date(item.modifiedAt).toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+        body.appendChild(meta);
+
+        card.appendChild(body);
+        galleryGrid.appendChild(card);
+    });
+}
+
+function setupLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxMedia = document.getElementById('lightboxMedia');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    if (!lightbox || !lightboxMedia || !lightboxClose || !lightboxPrev || !lightboxNext) return;
+
+    const mediaItems = Array.isArray(window.galleryMedia) ? window.galleryMedia : [];
+    let currentIndex = 0;
+
+    const renderLightboxItem = (index) => {
+        const item = mediaItems[index];
+        if (!item) return;
+
+        lightboxMedia.innerHTML = '';
+
+        if (item.type === 'video') {
+            const video = document.createElement('video');
+            video.className = 'lightbox-video';
+            video.src = `./${item.path}`;
+            video.controls = true;
+            video.autoplay = true;
+            video.preload = 'metadata';
+            video.setAttribute('playsinline', '');
+            lightboxMedia.appendChild(video);
+        } else {
+            const image = document.createElement('img');
+            image.className = 'lightbox-media';
+            image.src = `./${item.path}`;
+            image.alt = item.name;
+            lightboxMedia.appendChild(image);
+        }
+    };
+
+    const openLightbox = (index) => {
+        currentIndex = index;
+        renderLightboxItem(currentIndex);
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+        lightbox.hidden = true;
+        lightboxMedia.innerHTML = '';
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.gallery-card').forEach((card, index) => {
+        card.addEventListener('click', () => {
+            if (mediaItems[index]) {
+                openLightbox(index);
+            }
+        });
+
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                if (mediaItems[index]) {
+                    openLightbox(index);
+                }
+            }
+        });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => {
+        const prevIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+        if (mediaItems.length) {
+            openLightbox(prevIndex);
+        }
+    });
+    lightboxNext.addEventListener('click', () => {
+        const nextIndex = (currentIndex + 1) % mediaItems.length;
+        if (mediaItems.length) {
+            openLightbox(nextIndex);
+        }
+    });
+
+    lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (lightbox.hidden) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            closeLightbox();
+        } else if (event.key === 'ArrowLeft') {
+            const prevIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+            if (mediaItems.length) {
+                openLightbox(prevIndex);
+            }
+        } else if (event.key === 'ArrowRight') {
+            const nextIndex = (currentIndex + 1) % mediaItems.length;
+            if (mediaItems.length) {
+                openLightbox(nextIndex);
+            }
+        }
+    });
+}
 
 /**
  * Validate email format
