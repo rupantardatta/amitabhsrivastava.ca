@@ -64,3 +64,11 @@ URL: https://script.google.com/macros/s/AKfycbwJvDx7QTCnWO0QL4TKzx6mdH1MmxANE2xs
 1IsJviEwKvs1XR3tdGJp5YL2KwupdJBuLhhvzMJOL4jg
 
 https://docs.google.com/spreadsheets/d/1rzJJVijRePkC-bzLNMzckWUrFqVLRyfz4z0w_JUPqFg/edit?gid=1372021065#gid=1372021065
+
+nzbu fqcs uypi snnw
+
+kwld dule dznd mgkp
+
+
+smtp.gmail.com
+amitabh.srivastava.election@gmail.com
