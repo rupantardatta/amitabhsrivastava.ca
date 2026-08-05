@@ -260,6 +260,27 @@ body {
     margin: 0 auto;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    align-items: center;
+}
+
+.hero-buttons .btn-primary {
+    font-size: 1.05rem;
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(214, 69, 69, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(214, 69, 69, 0.4);
+    transform: translateY(-3px);
+}
+
 /* Updates section */
 .updates { background: #fff; padding: 3rem 0; }
 .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
@@ -295,6 +316,41 @@ body {
 .donate-email { font-size:1.05rem; color:var(--text-dark); margin:0.5rem 0; }
 .donate-actions { display:flex; gap:0.6rem; align-items:left; margin-top:0.75rem; }
 .donate-note { color:var(--text-light); font-size:0.95rem; margin-top:0.75rem; }
+
+/* Letter modal styles */
+.modal-body {
+    max-height: 65vh;
+    overflow-y: auto;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+.letter-content p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.letter-greeting {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.letter-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.letter-closing {
+    margin-top: 1.5rem;
+}
+
+.letter-signature {
+    font-weight: 500;
+    line-height: 1.8;
+}
 
 /* ============================================
    SECTIONS (GENERAL)
@@ -371,43 +427,390 @@ section h2 {
 }
 
 /* ============================================
-   PLATFORM SECTION
+   PLATFORM SECTION (BLUEPRINT)
    ============================================ */
 
 .platform {
     background-color: white;
 }
 
-.platform-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.platform-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+.blueprint-header {
     text-align: center;
+    margin-bottom: 3rem;
 }
 
-.platform-card:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-color: var(--accent-color);
-    transform: translateY(-4px);
+.blueprint-header h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
 }
 
-.platform-card h3 {
+.blueprint-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Residents First Introduction */
+.blueprint-intro {
+    background: var(--secondary-color);
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid var(--accent-color);
+}
+
+.blueprint-intro h3 {
+    font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
-    font-size: 1.3rem;
 }
 
-.platform-card p {
+.blueprint-intro > p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.experience-item {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.experience-item h4 {
+    color: var(--accent-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item p {
+    font-size: 0.9rem;
     color: var(--text-light);
     line-height: 1.6;
+}
+
+.intro-closing {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin: 1.5rem 0;
+}
+
+.priorities-overview {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.priorities-overview p {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.priorities-list {
+    list-style: none;
+    padding: 0;
+}
+
+.priorities-list li {
+    padding: 0.5rem 0;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-color);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.priorities-list li:last-child {
+    border-bottom: none;
+}
+
+.priorities-list li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Priority Sections */
+.priority-section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--accent-color);
+}
+
+.priority-number {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.priority-title {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.priority-goal {
+    background: var(--bg-light);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--accent-color);
+    font-weight: 500;
+}
+
+.priority-goal strong {
+    color: var(--accent-color);
+}
+
+.priority-section > p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.priority-actions {
+    background: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.priority-actions p {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.priority-actions ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
+}
+
+.priority-actions li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+.priority-actions li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: bold;
+}
+
+.priority-section em {
+    color: var(--text-light);
+    display: block;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   HOW I WILL WORK SECTION
+   ============================================ */
+
+.how-i-work {
+    background: white;
+}
+
+.work-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--secondary-color);
+    border-radius: 0.75rem;
+}
+
+.work-commitments,
+.first-hundred-days,
+.accountability {
+    background: var(--bg-light);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--accent-color);
+}
+
+.work-commitments h3,
+.first-hundred-days h3,
+.accountability h3 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.commitments-list,
+.days-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.commitments-list li,
+.days-list li {
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.commitments-list li:before,
+.days-list li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.accountability p {
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+/* ============================================
+   MY PROMISE SECTION
+   ============================================ */
+
+.my-promise {
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.05) 0%, rgba(214, 69, 69, 0.02) 100%);
+}
+
+.promise-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.promise-limitations {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--border-color);
+}
+
+.promise-limitations p {
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.promise-limitations p:last-child {
+    margin-bottom: 0;
+}
+
+.promise-commitments {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--accent-color);
+}
+
+.promise-commitments > p {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.promise-list {
+    list-style: none;
+    padding: 0;
+}
+
+.promise-list li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.promise-list li:last-child {
+    border-bottom: none;
+}
+
+.promise-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.promise-standard {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border-top: 4px solid var(--accent-color);
+}
+
+.promise-standard > p:first-child {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.standard-box {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0f2d66 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(13, 59, 102, 0.15);
+}
+
+.standard-box h3 {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 600;
+}
+
+.promise-standard > p:last-child {
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    font-weight: 500;
 }
 
 /* ============================================
@@ -671,8 +1074,49 @@ section h2 {
         font-size: 1.75rem;
     }
 
-    .platform-grid {
+    .blueprint-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .priority-title {
+        font-size: 1.3rem;
+    }
+
+    .experience-grid {
         grid-template-columns: 1fr;
+    }
+
+    .priority-actions ul {
+        grid-template-columns: 1fr;
+    }
+
+    .blueprint-intro {
+        padding: 1.5rem;
+    }
+
+    .priority-section {
+        padding: 1.5rem;
+    }
+
+    .commitments-list,
+    .days-list {
+        grid-template-columns: 1fr;
+    }
+
+    .standard-box h3 {
+        font-size: 1.3rem;
+    }
+
+    .work-commitments,
+    .first-hundred-days,
+    .accountability {
+        padding: 1.5rem;
+    }
+
+    .promise-limitations,
+    .promise-commitments,
+    .promise-standard {
+        padding: 1.5rem;
     }
 
     .feedback-form {

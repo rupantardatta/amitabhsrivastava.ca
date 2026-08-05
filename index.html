@@ -24,7 +24,7 @@
         <nav class="navbar">
             <div class="container">
                 <div class="logo">
-                    <h1>Amitabh Srivastava</h1>
+                    <h1>Amitabh Srivastava, B.Eng</h1>
                     <p class="tagline">Councillor Candidate, Ward 7, Mississauga</p>
                 </div>
                 <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
@@ -55,7 +55,10 @@
                     <h2 class="hero-title-line">A Commitment to Community</h2>
                     <h2 class="hero-title-line">A Vision for Ward 7</h2>
                     <p>Husband • Father • Entrepreneur • Small Business Owner • Businessman • Real Estate Professional</p>
-                    <a href="#feedback" class="btn btn-primary">Get In Touch</a>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" type="button" data-modal="letterModal">Read My Letter</button>
+                        <a href="#feedback" class="btn btn-outline">Get In Touch</a>
+                    </div>
                 </div>
                 <div class="hero-visual">
                     <img src="candidate-photo.jpg" alt="Amitabh Srivastava with Mississauga election banner" />
@@ -139,6 +142,56 @@
         </div>
     </div>
 
+    <!-- Letter Modal -->
+    <div class="modal" id="letterModal" role="dialog" aria-modal="true" aria-labelledby="letterTitle" hidden>
+        <div class="modal-inner">
+            <div class="modal-header">
+                <h3 id="letterTitle">A Letter to the Residents of Ward 7</h3>
+                <button class="modal-close" data-close aria-label="Close">×</button>
+            </div>
+            <div class="modal-body letter-content">
+                <p class="letter-greeting">Dear Residents,</p>
+                
+                <p>Thank you for taking the time to read this Community Blueprint.</p>
+
+                <p>Ward 7 is a remarkable place to call home. It is where families are building their future, seniors have created lasting memories, entrepreneurs have invested their dreams, and neighbours from every background come together to create one of the most diverse and welcoming communities in Mississauga.</p>
+
+                <p>Like many of you, I care deeply about the future of our neighbourhoods. We all want safe streets, reliable City services, responsible use of taxpayer dollars, thriving local businesses, well-maintained parks, and opportunities for our children and future generations.</p>
+
+                <p>These goals are not achieved through promises alone. They require thoughtful planning, careful listening, collaboration, and leadership that focuses on practical solutions rather than politics.</p>
+
+                <p>That is why I am running to serve as your Ward 7 Councillor.</p>
+
+                <p>Throughout my career, I have had the opportunity to work in engineering, public transit, retail management, business ownership, immigration consulting, and real estate. Each experience has given me a different perspective on how people live, work, and overcome challenges. More importantly, they have taught me that every decision affects real people, real families, and real businesses.</p>
+
+                <p>As a husband and father, I understand that the decisions made at City Hall shape everyday life. They influence how safely our children walk to school, how long we spend in traffic, the condition of our parks and sidewalks, the strength of our local economy, and the quality of the services we rely on every day.</p>
+
+                <p>This Community Blueprint is not simply an election platform. It is a practical plan that reflects the values I will bring to public office and the priorities I will advance when I am elected as your Councillor.</p>
+
+                <p>It has been developed with one principle in mind:</p>
+
+                <h4 class="letter-section-title">Residents First</h4>
+                
+                <p>The best decisions begin with listening. Throughout this campaign, I will continue meeting residents, business owners, community organizations, and neighbourhood groups because the strongest ideas often come from the people who experience these challenges every day.</p>
+
+                <p>No Councillor can solve every issue alone. Progress requires respectful collaboration with residents, City staff, fellow members of Council, and our provincial and federal partners. My commitment is to approach every issue with an open mind, honest communication, and a determination to find practical solutions.</p>
+
+                <p>Ward 7 is entering an important period of change. New development, growing infrastructure needs, and changing community expectations present both challenges and opportunities. We have the chance to build a community that is safer, more connected, financially responsible, and prepared for the future while preserving the welcoming character that makes Ward 7 such a special place to live.</p>
+
+                <p>I believe we can achieve that future together.</p>
+
+                <p>Thank you for your trust. I look forward to listening, learning, and working with you to build a stronger Ward 7 for everyone.</p>
+
+                <p class="letter-closing">Sincerely,</p>
+
+                <p class="letter-signature">
+                    Amitabh Srivastava, B.Eng.<br>
+                    Candidate for Mississauga Ward 7 Councillor
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
@@ -180,27 +233,274 @@
     <!-- Platform Section -->
     <section id="platform" class="platform">
         <div class="container">
-            <h2>My Priorities for Ward 7</h2>
-            <div class="platform-grid">
-                <div class="platform-card">
-                    <h3>Residents First</h3>
-                    <p>Listening to residents and ensuring their voices are heard at City Hall.</p>
+            <div class="blueprint-header">
+                <h2>The Ward 7 Community Blueprint</h2>
+                <p class="blueprint-subtitle">A Practical Plan for a Safer, Stronger Ward 7</p>
+            </div>
+
+            <!-- Residents First Introduction -->
+            <div class="blueprint-intro">
+                <h3>Residents First</h3>
+                <p>Putting residents first means more than listening during an election campaign. It means making residents the starting point of every decision at City Hall.</p>
+                <p>When I am elected as your Ward 7 Councillor, I will remain accessible, listen before making decisions, explain my position clearly and follow residents' concerns from the first report to the final response.</p>
+                
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <h4>Engineering</h4>
+                        <p>My Bachelor of Engineering in Electrical Engineering taught me to study problems carefully, identify their causes and develop practical, long-term solutions.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Public Transit</h4>
+                        <p>My experience in public transit taught me the importance of dependable public services.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Retail Management</h4>
+                        <p>Retail management taught me to respond to people respectfully and efficiently.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Business Ownership</h4>
+                        <p>Restaurant Business ownership taught me that every dollar and every decision matters.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Immigration Consulting</h4>
+                        <p>Immigration consulting taught me how to help people navigate complicated systems.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Real Estate</h4>
+                        <p>Real estate gave me a deeper understanding of housing, neighbourhoods and responsible growth.</p>
+                    </div>
                 </div>
-                <div class="platform-card">
-                    <h3>Responsible Spending</h3>
-                    <p>Protecting taxpayer dollars and focusing on value for money.</p>
+
+                <p class="intro-closing">These experiences have prepared me to understand issues from different perspectives and to bring a practical, organized and accountable approach to City Hall.</p>
+                
+                <div class="priorities-overview">
+                    <p><strong>Residents First will happen through five clear priorities:</strong></p>
+                    <ul class="priorities-list">
+                        <li>Safe Streets—Strong Communities</li>
+                        <li>Responsible Spending—Responsive Services</li>
+                        <li>Prepare Today—Protect Tomorrow</li>
+                        <li>Build Smart—Grow Responsibly</li>
+                        <li>Local Business—Shared Prosperity</li>
+                    </ul>
                 </div>
-                <div class="platform-card">
-                    <h3>Safe & Well-Maintained Neighbourhoods</h3>
-                    <p>Improving traffic safety, community standards, and local infrastructure.</p>
+            </div>
+
+            <!-- Priority 1 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 1</div>
+                <h3 class="priority-title">Safe Streets. Strong Communities.</h3>
+                <p class="priority-goal"><strong>The goal:</strong> A Ward 7 where children can walk more safely, seniors can cross with confidence and every neighbourhood feels maintained, connected and respected.</p>
+                
+                <p>Residents must feel safe walking, driving, taking transit and using public spaces.</p>
+                <p>As a father, I understand the concerns families have when children walk to school or cross busy intersections. My public-transit experience also taught me that streets, sidewalks and transit connections must work safely for seniors, families, commuters and people with disabilities.</p>
+                
+                <div class="priority-actions">
+                    <p><strong>When I am elected, I will advocate for:</strong></p>
+                    <ul>
+                        <li>Reviews of dangerous intersections</li>
+                        <li>Safer pedestrian crossing times</li>
+                        <li>Better school-zone safety</li>
+                        <li>Action on residential speeding</li>
+                        <li>Sidewalk repairs and accessibility improvements</li>
+                        <li>Better lighting near parks, pathways and transit stops</li>
+                        <li>Safer routes around construction zones</li>
+                        <li>Practical Vision Zero measures</li>
+                        <li>Youth recreation, mentorship and employment opportunities</li>
+                    </ul>
                 </div>
-                <div class="platform-card">
-                    <h3>Strong Local Businesses & Jobs</h3>
-                    <p>Supporting entrepreneurs, jobs, and economic growth in Ward 7.</p>
+                <p><em>My engineering background will help me examine traffic information, street design and infrastructure needs carefully before supporting solutions.</em></p>
+            </div>
+
+            <!-- Priority 2 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 2</div>
+                <h3 class="priority-title">Responsible Spending. Responsive Services.</h3>
+                <p class="priority-goal"><strong>The goal:</strong> A City government that respects every tax dollar, responds clearly and remains accountable for its results.</p>
+                
+                <p>Residents deserve City services that are accessible, efficient and accountable.</p>
+                <p>My experience managing businesses taught me that budgets require discipline, priorities and careful follow-up. Every dollar must be used responsibly, and every customer or resident deserves a clear response.</p>
+                
+                <div class="priority-actions">
+                    <p><strong>When I am elected, I will work to improve how residents interact with City Hall by advocating for:</strong></p>
+                    <ul>
+                        <li>Better 311 tracking and follow-up</li>
+                        <li>Clear service-response timelines</li>
+                        <li>Honest explanations when delays occur</li>
+                        <li>An accessible and responsive Councillor's office</li>
+                        <li>Regular Ward 7 project and service updates</li>
+                        <li>Stronger contractor accountability</li>
+                        <li>Better coordination among City departments</li>
+                        <li>Maintenance of roads, sidewalks, parks and public spaces</li>
+                        <li>Easier-to-understand City budgets</li>
+                        <li>Reduced duplication and unnecessary costs</li>
+                        <li>Value for every tax dollar</li>
+                    </ul>
                 </div>
-                <div class="platform-card">
-                    <h3>Connected Communities</h3>
-                    <p>Building stronger relationships between residents, organizations, and City Hall.</p>
+                <p><em>My engineering education and management experience will support a systematic approach to reviewing costs, tracking performance and identifying better ways to deliver services. Residents First means respecting residents' time, concerns and tax dollars.</em></p>
+            </div>
+
+            <!-- Priority 3 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 3</div>
+                <h3 class="priority-title">Prepare Today. Protect Tomorrow.</h3>
+                <p class="priority-goal"><strong>The goal:</strong> A Ward 7 that maintains what it has, plans responsibly for what it needs and is better prepared before the next major challenge arrives.</p>
+                
+                <p>Residents should not have to wait for another major storm before known flooding and infrastructure problems receive attention.</p>
+                <p>My engineering education taught me that prevention and proper planning are more effective than repeated emergency repairs. My experience in public services also taught me that infrastructure must be reliable because people depend on it every day.</p>
+                
+                <div class="priority-actions">
+                    <p><strong>When I am elected, I will advocate for:</strong></p>
+                    <ul>
+                        <li>Tracking repeated flooding and drainage locations</li>
+                        <li>Better catch-basin and storm-sewer maintenance</li>
+                        <li>Protection and management of Cooksville Creek</li>
+                        <li>Long-term stormwater infrastructure planning</li>
+                        <li>Stronger reviews of development-related drainage</li>
+                        <li>Better coordination of roads, utilities and construction</li>
+                        <li>Clear emergency communication during severe weather</li>
+                        <li>Information to help residents protect their properties</li>
+                        <li>Timely road and sidewalk maintenance</li>
+                        <li>Green infrastructure where appropriate</li>
+                    </ul>
+                </div>
+                <p><em>Known risks should be documented, investigated and addressed according to safety, urgency and long-term community need. Residents First means preparing before the emergency—not responding only after damage has occurred.</em></p>
+            </div>
+
+            <!-- Priority 4 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 4</div>
+                <h3 class="priority-title">Build Smart - Grow Responsibly.</h3>
+                <p class="priority-goal"><strong>The goal:</strong> Growth that creates safer, more complete and better-connected communities.</p>
+                
+                <p>Ward 7 will continue to grow, but development must improve residents' quality of life.</p>
+                <p>As a licensed real-estate professional, I understand housing, property, neighbourhood change and the importance of informed decisions. My engineering background also helps me consider whether infrastructure can support growth over the long term.</p>
+                
+                <div class="priority-actions">
+                    <p><strong>When I am elected, I will advocate for:</strong></p>
+                    <ul>
+                        <li>Infrastructure planned alongside development</li>
+                        <li>Consideration of the combined impact of multiple projects</li>
+                        <li>More family-sized housing</li>
+                        <li>Purpose-built rental housing</li>
+                        <li>Accessible and senior-friendly homes</li>
+                        <li>Protection of established neighbourhoods</li>
+                        <li>Stronger property standards in rental communities</li>
+                        <li>Housing connected to reliable transit</li>
+                        <li>Safer access to Cooksville GO and MiWay</li>
+                        <li>Protection of parks, trees and public spaces</li>
+                        <li>Clearer planning information for residents</li>
+                        <li>Progress on the proposed Cooksville Community Centre and Library</li>
+                    </ul>
+                </div>
+                <p><em>New buildings must be supported by roads, transit, stormwater capacity, parks, schools, childcare and community services. Residents First means ensuring growth works for the people who already live here and those who will call Ward 7 home in the future.</em></p>
+            </div>
+
+            <!-- Priority 5 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 5</div>
+                <h3 class="priority-title">Local Business - Shared Prosperity</h3>
+                <p class="priority-goal"><strong>The goal:</strong> A Ward 7 where businesses can succeed, families feel supported, seniors remain connected and young people can see a future for themselves.</p>
+                
+                <p>Local businesses, families, seniors, young people and community organizations give Ward 7 its identity.</p>
+                <p>As a former restaurant owner, I understand the challenges business owners face. I know the effects that construction, access problems, changing traffic patterns, municipal delays and rising costs can have on a business and the family behind it. My retail and business-management experience also taught me that strong communities depend on relationships, customer service and opportunities for people to participate.</p>
+                
+                <div class="priority-actions">
+                    <p><strong>When I am elected, I will advocate for:</strong></p>
+                    <ul>
+                        <li>Protecting business access during construction</li>
+                        <li>Advance notice of closures and schedule changes</li>
+                        <li>Better temporary signage and wayfinding</li>
+                        <li>Easier navigation of permits, inspections and City services</li>
+                        <li>Reduced avoidable municipal delays</li>
+                        <li>Promotion of local businesses</li>
+                        <li>Protection of Cooksville's independent business character</li>
+                        <li>Support for entrepreneurs and newcomers</li>
+                        <li>Youth employment, internships and skills development</li>
+                        <li>Better parks, recreation and community spaces</li>
+                        <li>Programs that keep seniors active and connected</li>
+                        <li>Opportunities for youth leadership</li>
+                        <li>Regular community walks, town halls and business roundtables</li>
+                    </ul>
+                </div>
+                <p><em>The proposed Cooksville Community Centre and Library should become a welcoming place where children learn, seniors remain active, newcomers connect and residents build stronger relationships. Residents First means supporting the people, businesses and organizations that make Ward 7 a community.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How I Will Work as Your Councillor Section -->
+    <section id="how-i-work" class="how-i-work">
+        <div class="container">
+            <h2>How I Will Work as Your Councillor</h2>
+            
+            <div class="work-intro">
+                <p>A platform is only meaningful when residents can see how it is being put into practice.</p>
+            </div>
+
+            <div class="work-commitments">
+                <h3>When elected, I will:</h3>
+                <ul class="commitments-list">
+                    <li>Remain accessible to residents and businesses</li>
+                    <li>Continue listening throughout the full Council term</li>
+                    <li>Explain decisions honestly and clearly</li>
+                    <li>Track major Ward 7 concerns and commitments</li>
+                    <li>Work respectfully with City staff and Council colleagues</li>
+                    <li>Advocate with Peel Region and other levels of government</li>
+                    <li>Protect the public interest</li>
+                    <li>Publish regular progress updates</li>
+                </ul>
+            </div>
+
+            <div class="first-hundred-days">
+                <h3>First 100 Days</h3>
+                <p>My first 100 days will focus on:</p>
+                <ul class="days-list">
+                    <li>Establishing an organized Ward 7 office</li>
+                    <li>Beginning a community listening tour</li>
+                    <li>Reviewing priority intersections and flooding concerns</li>
+                    <li>Meeting local businesses</li>
+                    <li>Examining major development and infrastructure files</li>
+                    <li>Creating a transparent system for tracking community issues</li>
+                </ul>
+            </div>
+
+            <div class="accountability">
+                <h3>Accountability & Transparency</h3>
+                <p>Residents should receive an annual progress report explaining what has been completed, what remains underway, what has been delayed and what priorities will guide the following year.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Promise to Ward 7 Section -->
+    <section id="my-promise" class="my-promise">
+        <div class="container">
+            <h2>My Promise to Ward 7</h2>
+            
+            <div class="promise-content">
+                <div class="promise-limitations">
+                    <p>I cannot promise that every challenge will be solved immediately.</p>
+                    <p>I cannot promise that one Councillor will be able to deliver every project alone.</p>
+                </div>
+
+                <div class="promise-commitments">
+                    <p><strong>I can promise how I will approach the responsibility.</strong></p>
+                    
+                    <ul class="promise-list">
+                        <li>I will listen carefully.</li>
+                        <li>I will study the facts.</li>
+                        <li>I will treat residents with respect.</li>
+                        <li>I will communicate honestly.</li>
+                        <li>I will work collaboratively.</li>
+                        <li>I will challenge unnecessary spending.</li>
+                        <li>I will advocate for safe streets, responsible spending, responsive services, reliable infrastructure, responsible growth and stronger communities.</li>
+                    </ul>
+                </div>
+
+                <div class="promise-standard">
+                    <p>Every major decision I make will be guided by one question:</p>
+                    <div class="standard-box">
+                        <h3>Will this improve the lives of the people of Ward 7?</h3>
+                    </div>
+                    <p>That will be my standard, my responsibility and my commitment.</p>
                 </div>
             </div>
         </div>
