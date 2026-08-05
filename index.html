@@ -506,6 +506,26 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <p class="section-subtitle">Photos and videos from community events, campaign moments, and local engagement.</p>
+            <div id="galleryStatus" class="gallery-status">Loading media…</div>
+            <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+          <!--  <p class="gallery-help">Add images or videos to the media folder and they will appear here automatically, newest first.</p> -->
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" hidden>
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">×</button>
+        <button class="lightbox-nav lightbox-nav-prev" id="lightboxPrev" aria-label="Previous media">←</button>
+        <div class="lightbox-content">
+            <div id="lightboxMedia"></div>
+        </div>
+        <button class="lightbox-nav lightbox-nav-next" id="lightboxNext" aria-label="Next media">→</button>
+    </div>
+
     <!-- Feedback Section -->
     <section id="feedback" class="feedback">
         <div class="container">
@@ -607,6 +627,7 @@
     <iframe name="volunteerTarget" id="volunteerTarget" style="display:none;"></iframe>
     <iframe name="feedbackTarget" id="feedbackTarget" style="display:none;"></iframe>
 
+    <script src="gallery-data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
