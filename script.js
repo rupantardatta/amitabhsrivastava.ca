@@ -388,6 +388,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalButtons = document.querySelectorAll('[data-modal]');
     const closeButtons = document.querySelectorAll('.modal-close');
 
+    function positionModal(modal) {
+        if (!modal) return;
+
+        const isMobile = window.innerWidth <= 640;
+        const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+        if (isMobile) {
+            const topPadding = 16;
+            const maxTop = Math.max(topPadding, viewportHeight - modal.offsetHeight - topPadding);
+            modal.style.top = `${Math.min(topPadding, maxTop)}px`;
+            modal.style.transform = 'translateX(-50%)';
+            return;
+        }
+
+        modal.style.top = '50%';
+        modal.style.transform = 'translate(-50%, -50%)';
+    }
+
     function openModal(id) {
         const modal = document.getElementById(id);
         if (!modal || !overlay) return;
@@ -396,6 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
         modal.setAttribute('aria-hidden', 'false');
         overlay.setAttribute('aria-hidden', 'false');
+        positionModal(modal);
         // focus first input
         const firstInput = modal.querySelector('input, textarea, button');
         if (firstInput) firstInput.focus();
@@ -408,6 +427,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
         modal.setAttribute('aria-hidden', 'true');
         overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function focusFirstInvalidField(form) {
+        if (!form) return;
+        const invalidField = form.querySelector('input:invalid, textarea:invalid');
+        if (invalidField) {
+            invalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            invalidField.focus();
+        }
     }
 
     modalButtons.forEach(btn => {
@@ -427,6 +455,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (overlay) {
         overlay.addEventListener('click', function() {
             document.querySelectorAll('.modal').forEach(m => { if(!m.hidden) closeModal(m); });
+        });
+    }
+
+    window.addEventListener('resize', function() {
+        document.querySelectorAll('.modal:not([hidden])').forEach(positionModal);
+    });
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', function() {
+            document.querySelectorAll('.modal:not([hidden])').forEach(positionModal);
         });
     }
 
@@ -473,6 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 volunteerNotice.textContent = 'Please provide name and email.';
                 volunteerNotice.className = 'modal-notice error';
                 volunteerNotice.style.display = 'block';
+                focusFirstInvalidField(volunteerForm);
                 return;
             }
 
@@ -480,6 +519,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 volunteerNotice.textContent = 'Please enter a valid email address.';
                 volunteerNotice.className = 'modal-notice error';
                 volunteerNotice.style.display = 'block';
+                document.getElementById('v-email').focus();
+                document.getElementById('v-email').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
 
@@ -487,6 +528,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 volunteerNotice.textContent = 'Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).';
                 volunteerNotice.className = 'modal-notice error';
                 volunteerNotice.style.display = 'block';
+                document.getElementById('v-phone').focus();
+                document.getElementById('v-phone').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
 
