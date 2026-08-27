@@ -37,56 +37,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const feedbackTarget = document.getElementById('feedbackTarget');
     let feedbackSubmitting = false;
 
-    feedbackTarget.addEventListener('load', function() {
-        if (!feedbackSubmitting) return;
-        feedbackSubmitting = false;
-        showFormNotice('✓ Thank you for your feedback! Your submission has been recorded.', 'success');
-        feedbackForm.reset();
-        formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => { formNotice.style.display = 'none'; }, 5000);
-    });
+    if (feedbackTarget) {
+        feedbackTarget.addEventListener('load', function() {
+            if (!feedbackSubmitting) return;
+            feedbackSubmitting = false;
+            showFormNotice('✓ Thank you for your feedback! Your submission has been recorded.', 'success');
+            feedbackForm.reset();
+            formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => { formNotice.style.display = 'none'; }, 5000);
+        });
+    }
 
-    // Handle feedback form submission
-    feedbackForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const topic = document.getElementById('topic').value;
-        const message = document.getElementById('message').value.trim();
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const topic = document.getElementById('topic').value;
+            const message = document.getElementById('message').value.trim();
 
-        // Validation
-        if (!name || !email || !topic || !message) {
-            showFormNotice('Please fill in all required fields.', 'error');
-            return;
-        }
-
-        // Email validation
-        if (!isValidEmail(email)) {
-            showFormNotice('Please enter a valid email address.', 'error');
-            return;
-        }
-
-        // Phone validation (if provided)
-        if (phone && !isValidPhoneNumber(phone)) {
-            showFormNotice('Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).', 'error');
-            return;
-        }
-
-        showFormNotice('Submitting your feedback...', 'success');
-        document.getElementById('f-submittedAt').value = new Date().toISOString();
-        feedbackSubmitting = true;
-        feedbackForm.target = 'feedbackTarget';
-        feedbackForm.submit();
-
-        setTimeout(() => {
-            if (feedbackSubmitting) {
-                feedbackSubmitting = false;
-                showFormNotice('There was a problem submitting feedback. Please try again or contact us directly.', 'error');
+            if (!name || !email || !topic || !message) {
+                showFormNotice('Please fill in all required fields.', 'error');
+                return;
             }
-        }, 10000);
-    });
+
+            if (!isValidEmail(email)) {
+                showFormNotice('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            if (phone && !isValidPhoneNumber(phone)) {
+                showFormNotice('Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).', 'error');
+                return;
+            }
+
+            showFormNotice('Submitting your feedback...', 'success');
+            document.getElementById('f-submittedAt').value = new Date().toISOString();
+            feedbackSubmitting = true;
+            feedbackForm.target = 'feedbackTarget';
+            feedbackForm.submit();
+
+            setTimeout(() => {
+                if (feedbackSubmitting) {
+                    feedbackSubmitting = false;
+                    showFormNotice('There was a problem submitting feedback. Please try again or contact us directly.', 'error');
+                }
+            }, 10000);
+        });
+    }
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -463,6 +463,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = document.getElementById('v-name').value.trim();
             const email = document.getElementById('v-email').value.trim();
             const phone = document.getElementById('v-phone').value.trim();
+            const address = document.getElementById('v-address') ? document.getElementById('v-address').value.trim() : '';
+            const wantTo = document.getElementById('v-wantTo') ? document.getElementById('v-wantTo').value.trim() : '';
+            const goals = document.getElementById('v-goals') ? document.getElementById('v-goals').value.trim() : '';
+            const availability = document.getElementById('v-availability') ? document.getElementById('v-availability').value.trim() : '';
+            const hours = document.getElementById('v-hours') ? document.getElementById('v-hours').value.trim() : '';
 
             if (!name || !email) {
                 volunteerNotice.textContent = 'Please provide name and email.';
@@ -489,6 +494,30 @@ document.addEventListener('DOMContentLoaded', function() {
             volunteerNotice.className = 'modal-notice success';
             volunteerNotice.style.display = 'block';
             document.getElementById('v-submittedAt').value = new Date().toISOString();
+
+            const volunteerFields = [
+                ['email', email],
+                ['name', name],
+                ['phone', phone],
+                ['address', address],
+                ['wantTo', wantTo],
+                ['goals', goals],
+                ['availability', availability],
+                ['hours', hours]
+            ];
+
+            volunteerFields.forEach(([key, value]) => {
+                const existing = volunteerForm.querySelector(`input[name="${key}"]`);
+                if (existing) {
+                    existing.value = value;
+                } else {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = value;
+                    volunteerForm.appendChild(input);
+                }
+            });
 
             volunteerSubmitting = true;
             volunteerForm.target = 'volunteerTarget';
