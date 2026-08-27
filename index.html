@@ -34,9 +34,9 @@
                 </button>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#platform">Platform</a></li>
-                    <li><a href="#feedback">Contact</a></li>
+                    <li><a href="#platform">Priorities</a></li>
+                    <li><a href="#about">Meet Amitabh</a></li>
+                    <li><a href="#feedback">Share an issue</a></li>
                 </ul>
                 <div class="header-ctas">
                     <button class="btn btn-outline" type="button" data-modal="volunteerModal">Volunteer</button>
@@ -54,8 +54,11 @@
                     <h2 class="hero-title-line">A Lifetime of Service</h2>
                     <h2 class="hero-title-line">A Commitment to Community</h2>
                     <h2 class="hero-title-line">A Vision for Ward 7</h2>
-                    <p>Husband • Father • Entrepreneur • Small Business Owner • Businessman • Real Estate Professional</p>
-                    <a href="#feedback" class="btn btn-primary">Get In Touch</a>
+                    <p>Husband • Father • Entrepreneur • Small Business Owner • Real Estate Professional</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" type="button" data-modal="letterModal">Read My Letter</button>
+                        <a href="#feedback" class="btn btn-outline">Share an issue</a>
+                    </div>
                 </div>
                 <div class="hero-visual">
                     <img src="candidate-photo.jpg" alt="Amitabh Srivastava with Mississauga election banner" />
@@ -69,16 +72,16 @@
         <div class="container">
             <h2>Updates & Events</h2>
             <div class="updates-grid">
-                <div class="update-card">
+                <div class="update-card" hidden>
                     <h4>Community Meet & Greet</h4>
                     <p><strong>TBD</strong> — Join us at the community centre to discuss local priorities.</p>
                 </div>
-                <div class="update-card">
+                <div class="update-card" hidden>
                     <h4>Town Hall: Infrastructure</h4>
                     <p><strong>TBD</strong> — Public forum on roads and transit improvements.</p>
                 </div>
                 <div class="update-card">
-                    <h4>Volunteer Drive</h4>
+                    <h4><a href="#" class="volunteer-link" data-modal="volunteerModal">Volunteer with the campaign</a></h4>
                     <p><strong>Ongoing</strong> — Join our team to help canvass and phonebank.</p>
                 </div>
             </div>
@@ -95,7 +98,7 @@
                 <h3 id="volunteerTitle">Volunteer with Amitabh</h3>
                 <button class="modal-close" data-close aria-label="Close">×</button>
             </div>
-            <form id="volunteerForm" class="modal-form" action="https://script.google.com/macros/s/AKfycbwJvDx7QTCnWO0QL4TKzx6mdH1MmxANE2xs4h9jgk72v1oDSH_KEPRrxN96qKyK8pkPqQ/exec" method="POST" target="volunteerTarget">
+            <form id="volunteerForm" class="modal-form" action="https://script.google.com/macros/s/AKfycbwHu1i-ahqOycoWUbD_JwCp3mbvtLmryKUbBwQLeWLYK0EBtQa5GrXZfqcb9cbpEHltwQ/exec" method="POST" target="volunteerTarget">
                 <input type="hidden" name="formType" value="volunteer">
                 <input type="hidden" name="submittedAt" id="v-submittedAt" value="">
                 <div class="form-group">
@@ -111,8 +114,24 @@
                     <input type="tel" id="v-phone" name="phone">
                 </div>
                 <div class="form-group">
-                    <label for="v-message">How would you like to help?</label>
-                    <textarea id="v-message" name="helpInterest" rows="4" placeholder="Canvassing, phonebanking, events..."></textarea>
+                    <label for="v-address">Address (Full Address with Zip)</label>
+                    <input type="text" id="v-address" name="address" placeholder="Street, city, province, postal code">
+                </div>
+                <div class="form-group">
+                    <label for="v-wantTo">I want to:</label>
+                    <input type="text" id="v-wantTo" name="wantTo" placeholder="Volunteer, canvass, phonebank, organize events...">
+                </div>
+                <div class="form-group">
+                    <label for="v-goals">Tell us about your goals, interests, and the skills you'd like to develop.</label>
+                    <textarea id="v-goals" name="goals" rows="4" placeholder="Whether you're looking to gain leadership experience, build your network, develop new skills, or give back to the community..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="v-availability">What days of the week are you available?</label>
+                    <input type="text" id="v-availability" name="availability" placeholder="Weekdays, evenings, weekends...">
+                </div>
+                <div class="form-group">
+                    <label for="v-hours">How many hours can you dedicate to Team Amitabh each week?</label>
+                    <input type="text" id="v-hours" name="hours" placeholder="For example: 3-5 hours/week">
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
                 <p class="modal-notice" id="volunteerNotice" style="display:none;"></p>
@@ -139,40 +158,73 @@
         </div>
     </div>
 
+    <!-- Letter Modal -->
+    <div class="modal" id="letterModal" role="dialog" aria-modal="true" aria-labelledby="letterTitle" hidden>
+        <div class="modal-inner">
+            <div class="modal-header">
+                <h3 id="letterTitle">A Letter to the Residents of Ward 7</h3>
+                <button class="modal-close" data-close aria-label="Close">×</button>
+            </div>
+            <div class="modal-body letter-content">
+                <p class="letter-greeting">Dear Residents,</p>
+                
+                <p>Thank you for taking the time to read this Community Blueprint.</p>
+
+                <p>Ward 7 is a remarkable place to call home. It is where families are building their future, seniors have created lasting memories, entrepreneurs have invested their dreams, and neighbours from every background come together to create one of the most diverse and welcoming communities in Mississauga.</p>
+
+                <p>Like many of you, I care deeply about the future of our neighbourhoods. We all want safe streets, reliable City services, responsible use of taxpayer dollars, thriving local businesses, well-maintained parks, and opportunities for our children and future generations.</p>
+
+                <p>These goals are not achieved through promises alone. They require thoughtful planning, careful listening, collaboration, and leadership that focuses on practical solutions rather than politics.</p>
+
+                <p>That is why I am running to serve as your Ward 7 Councillor.</p>
+
+                <p>Throughout my career, I have had the opportunity to work in engineering, public transit, retail management, business ownership, immigration consulting, and real estate. Each experience has given me a different perspective on how people live, work, and overcome challenges. More importantly, they have taught me that every decision affects real people, real families, and real businesses.</p>
+
+                <p>As a husband and father, I understand that the decisions made at City Hall shape everyday life. They influence how safely our children walk to school, how long we spend in traffic, the condition of our parks and sidewalks, the strength of our local economy, and the quality of the services we rely on every day.</p>
+
+                <p>This Community Blueprint is not simply an election platform. It is a practical plan that reflects the values I will bring to public office and the priorities I will advance when I am elected as your Councillor.</p>
+
+                <p>It has been developed with one principle in mind:</p>
+
+                <h4 class="letter-section-title">Residents First</h4>
+                
+                <p>The best decisions begin with listening. Throughout this campaign, I will continue meeting residents, business owners, community organizations, and neighbourhood groups because the strongest ideas often come from the people who experience these challenges every day.</p>
+
+                <p>No Councillor can solve every issue alone. Progress requires respectful collaboration with residents, City staff, fellow members of Council, and our provincial and federal partners. My commitment is to approach every issue with an open mind, honest communication, and a determination to find practical solutions.</p>
+
+                <p>Ward 7 is entering an important period of change. New development, growing infrastructure needs, and changing community expectations present both challenges and opportunities. We have the chance to build a community that is safer, more connected, financially responsible, and prepared for the future while preserving the welcoming character that makes Ward 7 such a special place to live.</p>
+
+                <p>I believe we can achieve that future together.</p>
+
+                <p>Thank you for your trust. I look forward to listening, learning, and working with you to build a stronger Ward 7 for everyone.</p>
+
+                <p class="letter-closing">Sincerely,</p>
+
+                <p class="letter-signature">
+                    Amitabh Srivastava, B.Eng.<br>
+                    Candidate for Mississauga Ward 7 Councillor
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>My experience spans both the private sector and public service, giving me a balanced perspective on how to support residents, strengthen communities, and ensure taxpayer dollars are used wisely.</p>
-                    
-                    <p>I am a husband, father of two daughters, entrepreneur, small business owner, businessman, real estate professional, and proud first-generation Canadian.</p>
-
-                    <p>More than two decades ago, I came to Canada seeking opportunity, safety, and a better future for the family I hoped to build. Like many newcomers, my journey was not always easy. I worked hard, adapted to new challenges, made difficult decisions, and learned firsthand the value of perseverance, community, and opportunity.</p>
+                    <p>Amitabh Srivastava is a husband, father, engineer, and community-minded entrepreneur running for Ward 7 Councillor. Raised with the values of service and responsibility, he has built a career helping families, workers, and newcomers navigate complex systems with clarity and respect. From engineering and public transit to small business ownership, immigration consulting, and real estate, Amitabh has focused on practical problem-solving and listening to people. He understands the challenges Ward 7 families face because he lives them too: balancing work, community, and the everyday needs of a growing neighbourhood. Amitabh is committed to transparent leadership, responsible spending, and a City Hall that puts residents first.</p>
                 </div>
                 <div class="values">
-                    <h3>Core Values</h3>
+                    <h3>Proof Points</h3>
                     <ul class="values-list">
-                        <li><strong>Family First:</strong> Decisions that protect our communities</li>
-                        <li><strong>Transparency:</strong> Open and honest communication</li>
-                        <li><strong>Accountability:</strong> Following through on commitments</li>
-                        <li><strong>Growth:</strong> Smart development that preserves character</li>
+                        <li><strong>Engineering foundation:</strong> B.Eng. background with a systems-based approach to problem solving</li>
+                        <li><strong>Public service experience:</strong> Work across transit, operations, and resident-facing roles</li>
+                        <li><strong>Small business perspective:</strong> Entrepreneurial experience shaped by real costs, risks, and community needs</li>
+                        <li><strong>Family-first leadership:</strong> Grounded in the everyday realities of Ward 7 households and neighbourhoods</li>
                     </ul>
                 </div>
-                <div class="about-text">
-                    <p>I was born into a family with a strong tradition of public service, education, and community contribution. My father, who came from a farming background, dedicated his career to public service and was recognized with a Presidential Medal for excellence in duty. Those values of integrity, service, and responsibility have guided me throughout my life and continue to inspire me today.</p>
-
-                    <p>Over the years, I have built a diverse career that has given me a unique understanding of the challenges and opportunities facing residents. I have worked in retail sales and management, public transit, entrepreneurship, restaurant ownership, and real estate. As an entrepreneur and small business owner, I understand the risks, sacrifices, and determination required to build and sustain a business. As a real estate professional, I work closely with families, homeowners, newcomers, and business owners, helping them navigate some of the most important decisions of their lives.</p>
-
-                    <p>My education and professional background include Electrical Engineering, immigration consulting, and real estate. These experiences have strengthened my ability to analyze problems, understand complex systems, and develop practical solutions. They have also given me valuable insight into how government policies affect residents, businesses, housing, and the growth of our city.</p>
-
-                    <p>My wife is a respected leader in public education, and together we have experienced many of the opportunities and challenges faced by families in our community. Raising our two daughters has reinforced the importance of safe neighbourhoods, quality public services, strong community programs, and responsible leadership.</p>
-
-                    <p>Throughout my career, I have consistently focused on improving systems, simplifying processes, communicating clearly, and finding practical ways to make better use of available resources. I believe government should work the same way—listening to residents, responding to their needs, and delivering value for taxpayers.</p>
-
-                    <p>I am running for Ward 7 Councillor because I believe our city deserves leadership that is accessible, accountable, and focused on practical solutions. I want to help build a City Hall that listens to residents, spends taxpayer dollars responsibly, and supports strong communities where families, seniors, newcomers, and businesses can thrive.</p>
-                </div>  
             </div>
         </div>
     </section>
@@ -180,28 +232,151 @@
     <!-- Platform Section -->
     <section id="platform" class="platform">
         <div class="container">
-            <h2>My Priorities for Ward 7</h2>
-            <div class="platform-grid">
-                <div class="platform-card">
-                    <h3>Residents First</h3>
-                    <p>Listening to residents and ensuring their voices are heard at City Hall.</p>
+            <div class="blueprint-header">
+                <h2>The Ward 7 Community Blueprint</h2>
+                <p class="blueprint-subtitle">A Practical Plan for a Safer, Stronger Ward 7</p>
+            </div>
+
+            <!-- Residents First Introduction -->
+            <div class="blueprint-intro">
+                <h3>Residents First</h3>
+                <p>Putting residents first means more than listening during an election campaign. It means making residents the starting point of every decision at City Hall.</p>
+                <p>When I am elected as your Ward 7 Councillor, I will remain accessible, listen before making decisions, explain my position clearly and follow residents' concerns from the first report to the final response.</p>
+                <p>My background in engineering, transit, business, and housing informs a practical approach to City Hall.</p>
+                <p class="intro-closing">These experiences have prepared me to understand issues from different perspectives and to bring a practical, organized and accountable approach to City Hall.</p>
+                
+                <div class="priorities-overview">
+                    <p><strong>Residents First will happen through five clear priorities:</strong></p>
+                    <ul class="priorities-list">
+                        <li>Safe Streets—Strong Communities</li>
+                        <li>Responsible Spending—Responsive Services</li>
+                        <li>Prepare Today—Protect Tomorrow</li>
+                        <li>Build Smart—Grow Responsibly</li>
+                        <li>Local Business—Shared Prosperity</li>
+                    </ul>
                 </div>
-                <div class="platform-card">
-                    <h3>Responsible Spending</h3>
-                    <p>Protecting taxpayer dollars and focusing on value for money.</p>
+            </div>
+
+            <!-- Priority 1 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 1</div>
+                <h3 class="priority-title">Safe Streets. Strong Communities.</h3>
+                <p class="priority-outcome">Ward 7 residents can move through their neighbourhoods safely, confidently, and without preventable road hazards.</p>
+                <ul class="priority-actions compact">
+                    <li>Safer intersections, school zones, and pedestrian crossings</li>
+                    <li>Faster action on speeding, visibility, and lighting concerns</li>
+                    <li>Better access to transit, parks, and community routes</li>
+                </ul>
+                <details class="priority-details">
+                    <summary>See details</summary>
+                    <p>As a parent and community member, I understand the concern of families who want safer routes to school, transit, and local amenities. My engineering background helps me evaluate traffic patterns and infrastructure needs carefully so decisions are based on evidence, not guesswork.</p>
+                </details>
+            </div>
+
+            <!-- Priority 2 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 2</div>
+                <h3 class="priority-title">Responsible Spending. Responsive Services.</h3>
+                <p class="priority-outcome">Residents get clear, timely service and more value from every tax dollar spent.</p>
+                <ul class="priority-actions compact">
+                    <li>Stronger 311 follow-up and repair tracking</li>
+                    <li>Clearer service timelines and public reporting</li>
+                    <li>Better contractor accountability and lower waste</li>
+                </ul>
+                <details class="priority-details">
+                    <summary>See details</summary>
+                    <p>Residents deserve city services that are easy to access, honest about delays, and accountable for results. My business background has taught me that disciplined budgeting and clear follow-up are essential for keeping services responsive and cost-effective.</p>
+                </details>
+            </div>
+
+            <!-- Priority 3 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 3</div>
+                <h3 class="priority-title">Prepare Today. Protect Tomorrow.</h3>
+                <p class="priority-outcome">Ward 7 stays ahead of flooding, maintenance issues, and climate risks before they become emergencies.</p>
+                <ul class="priority-actions compact">
+                    <li>Priority fixes for flooding and drainage hotspots</li>
+                    <li>Better stormwater planning and road maintenance</li>
+                    <li>Clear emergency communication and resident guidance</li>
+                </ul>
+                <details class="priority-details">
+                    <summary>See details</summary>
+                    <p>Known risks should be documented, prioritized, and addressed before storm damage escalates. My engineering background informs a practical, prevention-first approach to infrastructure so residents are not left dealing with repeated repairs and disruption.</p>
+                </details>
+            </div>
+
+            <!-- Priority 4 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 4</div>
+                <h3 class="priority-title">Build Smart. Grow Responsibly.</h3>
+                <p class="priority-outcome">Growth strengthens neighbourhoods without overwhelming roads, transit, parks, or housing affordability.</p>
+                <ul class="priority-actions compact">
+                    <li>Housing that matches family, rental, and senior needs</li>
+                    <li>Infrastructure and transit planned with new development</li>
+                    <li>Protection of parks, neighbourhood character, and public space</li>
+                </ul>
+                <details class="priority-details">
+                    <summary>See details</summary>
+                    <p>Ward 7 will continue to grow, but development must improve residents' quality of life. I will push for housing choices that are affordable, well-connected, and supported by roads, transit, and community services that already exist or are planned.</p>
+                </details>
+            </div>
+
+            <!-- Priority 5 -->
+            <div class="priority-section">
+                <div class="priority-number">Priority 5</div>
+                <h3 class="priority-title">Local Business. Shared Prosperity.</h3>
+                <p class="priority-outcome">Local businesses thrive, seniors stay connected, and young people see a future in Ward 7.</p>
+                <ul class="priority-actions compact">
+                    <li>Reliable access and wayfinding during construction</li>
+                    <li>Support for entrepreneurs, youth, and community programming</li>
+                    <li>Stronger neighbourhood identity through local business growth</li>
+                </ul>
+                <details class="priority-details">
+                    <summary>See details</summary>
+                    <p>Strong communities depend on the people and businesses that make them vibrant. As a former business owner, I understand how construction, municipal delays, and poor access can damage local trade. I want Ward 7 to support small business opportunity, youth engagement, and active community spaces.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accountability Section -->
+    <section id="accountability" class="accountability-section">
+        <div class="container">
+            <h2>Accountability</h2>
+
+            <div class="accountability-intro">
+                <p>A platform is only meaningful when residents can see how it is put into practice and how progress is measured.</p>
+            </div>
+
+            <div class="accountability-grid">
+                <div class="accountability-card">
+                    <h3>Accessible office</h3>
+                    <p>Residents and businesses will have a direct, responsive way to raise concerns, ask questions, and get updates.</p>
                 </div>
-                <div class="platform-card">
-                    <h3>Safe & Well-Maintained Neighbourhoods</h3>
-                    <p>Improving traffic safety, community standards, and local infrastructure.</p>
+                <div class="accountability-card">
+                    <h3>Clear updates</h3>
+                    <p>I will share regular progress reports so Ward 7 residents know what is moving, what is delayed, and why.</p>
                 </div>
-                <div class="platform-card">
-                    <h3>Strong Local Businesses & Jobs</h3>
-                    <p>Supporting entrepreneurs, jobs, and economic growth in Ward 7.</p>
+                <div class="accountability-card">
+                    <h3>Transparent issue tracking</h3>
+                    <p>Major concerns will be tracked consistently, followed up on, and reviewed with residents as work progresses.</p>
                 </div>
-                <div class="platform-card">
-                    <h3>Connected Communities</h3>
-                    <p>Building stronger relationships between residents, organizations, and City Hall.</p>
+                <div class="accountability-card">
+                    <h3>Annual progress report</h3>
+                    <p>Each year, I will publish a clear summary of completed work, ongoing priorities, and next steps for the ward.</p>
                 </div>
+            </div>
+
+            <div class="accountability-callout">
+                <h3>First 100 Days</h3>
+                <ul class="callout-list">
+                    <li>Establish an organized Ward 7 office</li>
+                    <li>Begin a community listening tour</li>
+                    <li>Review priority intersections, drainage, and infrastructure concerns</li>
+                    <li>Meet local businesses, residents, and community groups</li>
+                    <li>Examine major development and capital files</li>
+                    <li>Create a transparent system for tracking resident issues</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -229,7 +404,7 @@
     <!-- Feedback Section -->
     <section id="feedback" class="feedback">
         <div class="container">
-            <h2>Share Your Feedback</h2>
+            <h2>Share an issue</h2>
             <p class="section-subtitle">Your voice matters. Tell me what matters most to you and Ward 7.</p>
             
             <form class="feedback-form" id="feedbackForm" action="https://script.google.com/macros/s/AKfycbwJvDx7QTCnWO0QL4TKzx6mdH1MmxANE2xs4h9jgk72v1oDSH_KEPRrxN96qKyK8pkPqQ/exec" method="POST" target="feedbackTarget">
