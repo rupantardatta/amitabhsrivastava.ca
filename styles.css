@@ -745,6 +745,14 @@ section h2 {
     color: var(--accent-color);
 }
 
+.priority-outcome {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin: 0 0 1rem;
+    font-weight: 600;
+}
+
 .priority-section > p {
     line-height: 1.8;
     margin-bottom: 1rem;
@@ -787,6 +795,43 @@ section h2 {
     font-weight: bold;
 }
 
+.priority-actions.compact {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+}
+
+.priority-actions.compact li {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.85rem 0.9rem 0.85rem 2.2rem;
+}
+
+.priority-details {
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.priority-details summary {
+    cursor: pointer;
+    color: var(--accent-color);
+    font-weight: 700;
+    list-style: none;
+}
+
+.priority-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.priority-details p {
+    margin-top: 0.75rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
 .priority-section em {
     color: var(--text-light);
     display: block;
@@ -797,182 +842,87 @@ section h2 {
 }
 
 /* ============================================
-   HOW I WILL WORK SECTION
+   ACCOUNTABILITY SECTION
    ============================================ */
 
-.how-i-work {
+.accountability-section {
     background: white;
 }
 
-.work-intro {
+.accountability-intro {
     text-align: center;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
     padding: 1.5rem;
+    margin-bottom: 2rem;
     background: var(--secondary-color);
     border-radius: 0.75rem;
-}
-
-.work-commitments,
-.first-hundred-days,
-.accountability {
-    background: var(--bg-light);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 0.75rem;
-    border-left: 4px solid var(--accent-color);
-}
-
-.work-commitments h3,
-.first-hundred-days h3,
-.accountability h3 {
-    font-size: 1.4rem;
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
-.commitments-list,
-.days-list {
+.accountability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.accountability-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.accountability-card h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.accountability-card p {
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.accountability-callout {
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.96) 0%, rgba(31, 86, 150, 0.96) 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 15px 35px rgba(13, 59, 102, 0.15);
+}
+
+.accountability-callout h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.callout-list {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
 }
 
-.commitments-list li,
-.days-list li {
-    padding-left: 2rem;
+.callout-list li {
     position: relative;
-    color: var(--text-dark);
+    padding-left: 1.6rem;
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.6;
 }
 
-.commitments-list li:before,
-.days-list li:before {
+.callout-list li:before {
     content: "→";
     position: absolute;
     left: 0;
-    color: var(--accent-color);
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.accountability p {
-    line-height: 1.8;
-    color: var(--text-dark);
-}
-
-/* ============================================
-   MY PROMISE SECTION
-   ============================================ */
-
-.my-promise {
-    background: linear-gradient(135deg, rgba(13, 59, 102, 0.05) 0%, rgba(214, 69, 69, 0.02) 100%);
-}
-
-.promise-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.promise-limitations {
-    background: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 0.75rem;
-    border: 2px solid var(--border-color);
-}
-
-.promise-limitations p {
-    font-size: 1.05rem;
-    color: var(--text-dark);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
-
-.promise-limitations p:last-child {
-    margin-bottom: 0;
-}
-
-.promise-commitments {
-    background: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 0.75rem;
-    border: 2px solid var(--accent-color);
-}
-
-.promise-commitments > p {
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-.promise-list {
-    list-style: none;
-    padding: 0;
-}
-
-.promise-list li {
-    padding: 0.75rem 0;
-    padding-left: 2rem;
-    position: relative;
-    color: var(--text-dark);
-    line-height: 1.7;
-    font-size: 1rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.promise-list li:last-child {
-    border-bottom: none;
-}
-
-.promise-list li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--success);
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.promise-standard {
-    text-align: center;
-    background: white;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    border-top: 4px solid var(--accent-color);
-}
-
-.promise-standard > p:first-child {
-    font-size: 1.05rem;
-    color: var(--text-light);
-    margin-bottom: 2rem;
-}
-
-.standard-box {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #0f2d66 100%);
-    color: white;
-    padding: 2.5rem;
-    border-radius: 0.75rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 30px rgba(13, 59, 102, 0.15);
-}
-
-.standard-box h3 {
-    font-size: 1.6rem;
-    line-height: 1.6;
-    margin: 0;
-    font-weight: 600;
-}
-
-.promise-standard > p:last-child {
-    font-size: 1.05rem;
-    color: var(--text-dark);
-    font-weight: 500;
+    color: #fff;
+    font-weight: 700;
 }
 
 /* ============================================
