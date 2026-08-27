@@ -37,56 +37,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const feedbackTarget = document.getElementById('feedbackTarget');
     let feedbackSubmitting = false;
 
-    feedbackTarget.addEventListener('load', function() {
-        if (!feedbackSubmitting) return;
-        feedbackSubmitting = false;
-        showFormNotice('✓ Thank you for your feedback! Your submission has been recorded.', 'success');
-        feedbackForm.reset();
-        formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => { formNotice.style.display = 'none'; }, 5000);
-    });
+    if (feedbackTarget) {
+        feedbackTarget.addEventListener('load', function() {
+            if (!feedbackSubmitting) return;
+            feedbackSubmitting = false;
+            showFormNotice('✓ Thank you for your feedback! Your submission has been recorded.', 'success');
+            feedbackForm.reset();
+            formNotice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => { formNotice.style.display = 'none'; }, 5000);
+        });
+    }
 
-    // Handle feedback form submission
-    feedbackForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const topic = document.getElementById('topic').value;
-        const message = document.getElementById('message').value.trim();
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const topic = document.getElementById('topic').value;
+            const message = document.getElementById('message').value.trim();
 
-        // Validation
-        if (!name || !email || !topic || !message) {
-            showFormNotice('Please fill in all required fields.', 'error');
-            return;
-        }
-
-        // Email validation
-        if (!isValidEmail(email)) {
-            showFormNotice('Please enter a valid email address.', 'error');
-            return;
-        }
-
-        // Phone validation (if provided)
-        if (phone && !isValidPhoneNumber(phone)) {
-            showFormNotice('Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).', 'error');
-            return;
-        }
-
-        showFormNotice('Submitting your feedback...', 'success');
-        document.getElementById('f-submittedAt').value = new Date().toISOString();
-        feedbackSubmitting = true;
-        feedbackForm.target = 'feedbackTarget';
-        feedbackForm.submit();
-
-        setTimeout(() => {
-            if (feedbackSubmitting) {
-                feedbackSubmitting = false;
-                showFormNotice('There was a problem submitting feedback. Please try again or contact us directly.', 'error');
+            if (!name || !email || !topic || !message) {
+                showFormNotice('Please fill in all required fields.', 'error');
+                return;
             }
-        }, 10000);
-    });
+
+            if (!isValidEmail(email)) {
+                showFormNotice('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            if (phone && !isValidPhoneNumber(phone)) {
+                showFormNotice('Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).', 'error');
+                return;
+            }
+
+            showFormNotice('Submitting your feedback...', 'success');
+            document.getElementById('f-submittedAt').value = new Date().toISOString();
+            feedbackSubmitting = true;
+            feedbackForm.target = 'feedbackTarget';
+            feedbackForm.submit();
+
+            setTimeout(() => {
+                if (feedbackSubmitting) {
+                    feedbackSubmitting = false;
+                    showFormNotice('There was a problem submitting feedback. Please try again or contact us directly.', 'error');
+                }
+            }, 10000);
+        });
+    }
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -388,6 +388,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalButtons = document.querySelectorAll('[data-modal]');
     const closeButtons = document.querySelectorAll('.modal-close');
 
+    function positionModal(modal) {
+        if (!modal) return;
+
+        const isMobile = window.innerWidth <= 640;
+        const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+        if (isMobile) {
+            const topPadding = 16;
+            const maxTop = Math.max(topPadding, viewportHeight - modal.offsetHeight - topPadding);
+            modal.style.top = `${Math.min(topPadding, maxTop)}px`;
+            modal.style.transform = 'translateX(-50%)';
+            return;
+        }
+
+        modal.style.top = '50%';
+        modal.style.transform = 'translate(-50%, -50%)';
+    }
+
     function openModal(id) {
         const modal = document.getElementById(id);
         if (!modal || !overlay) return;
@@ -396,6 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
         modal.setAttribute('aria-hidden', 'false');
         overlay.setAttribute('aria-hidden', 'false');
+        positionModal(modal);
         // focus first input
         const firstInput = modal.querySelector('input, textarea, button');
         if (firstInput) firstInput.focus();
@@ -408,6 +427,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = '';
         modal.setAttribute('aria-hidden', 'true');
         overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function focusFirstInvalidField(form) {
+        if (!form) return;
+        const invalidField = form.querySelector('input:invalid, textarea:invalid');
+        if (invalidField) {
+            invalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            invalidField.focus();
+        }
     }
 
     modalButtons.forEach(btn => {
@@ -427,6 +455,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (overlay) {
         overlay.addEventListener('click', function() {
             document.querySelectorAll('.modal').forEach(m => { if(!m.hidden) closeModal(m); });
+        });
+    }
+
+    window.addEventListener('resize', function() {
+        document.querySelectorAll('.modal:not([hidden])').forEach(positionModal);
+    });
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', function() {
+            document.querySelectorAll('.modal:not([hidden])').forEach(positionModal);
         });
     }
 
@@ -463,11 +501,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = document.getElementById('v-name').value.trim();
             const email = document.getElementById('v-email').value.trim();
             const phone = document.getElementById('v-phone').value.trim();
+            const address = document.getElementById('v-address') ? document.getElementById('v-address').value.trim() : '';
+            const wantTo = document.getElementById('v-wantTo') ? document.getElementById('v-wantTo').value.trim() : '';
+            const goals = document.getElementById('v-goals') ? document.getElementById('v-goals').value.trim() : '';
+            const availability = document.getElementById('v-availability') ? document.getElementById('v-availability').value.trim() : '';
+            const hours = document.getElementById('v-hours') ? document.getElementById('v-hours').value.trim() : '';
 
             if (!name || !email) {
                 volunteerNotice.textContent = 'Please provide name and email.';
                 volunteerNotice.className = 'modal-notice error';
                 volunteerNotice.style.display = 'block';
+                focusFirstInvalidField(volunteerForm);
                 return;
             }
 
@@ -475,6 +519,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 volunteerNotice.textContent = 'Please enter a valid email address.';
                 volunteerNotice.className = 'modal-notice error';
                 volunteerNotice.style.display = 'block';
+                document.getElementById('v-email').focus();
+                document.getElementById('v-email').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
 
@@ -482,6 +528,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 volunteerNotice.textContent = 'Please enter a valid phone number (e.g., (123) 456-7890 or 123-456-7890).';
                 volunteerNotice.className = 'modal-notice error';
                 volunteerNotice.style.display = 'block';
+                document.getElementById('v-phone').focus();
+                document.getElementById('v-phone').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
 
@@ -489,6 +537,30 @@ document.addEventListener('DOMContentLoaded', function() {
             volunteerNotice.className = 'modal-notice success';
             volunteerNotice.style.display = 'block';
             document.getElementById('v-submittedAt').value = new Date().toISOString();
+
+            const volunteerFields = [
+                ['email', email],
+                ['name', name],
+                ['phone', phone],
+                ['address', address],
+                ['wantTo', wantTo],
+                ['goals', goals],
+                ['availability', availability],
+                ['hours', hours]
+            ];
+
+            volunteerFields.forEach(([key, value]) => {
+                const existing = volunteerForm.querySelector(`input[name="${key}"]`);
+                if (existing) {
+                    existing.value = value;
+                } else {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = value;
+                    volunteerForm.appendChild(input);
+                }
+            });
 
             volunteerSubmitting = true;
             volunteerForm.target = 'volunteerTarget';
