@@ -390,6 +390,17 @@ section h2 {
     text-align: center;
 }
 
+.about-modal-link {
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+}
+
+.about-modal-link:hover,
+.about-modal-link:focus-visible {
+    text-decoration: underline;
+}
+
 .section-subtitle {
     text-align: center;
     color: var(--text-light);
