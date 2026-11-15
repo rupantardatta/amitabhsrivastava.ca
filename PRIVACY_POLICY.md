@@ -1,74 +1,31 @@
-# Privacy Policy
+# Privacy notice
 
-**Last Updated**: June 2026  
-**Campaign**: Ward 7 Councillor Campaign
+**Last updated:** November 15, 2026
 
-## Introduction
+This notice describes the current website for Amitabh Srivastava, a real estate professional serving Mississauga and the Greater Toronto Area.
 
-This Privacy Policy outlines how we collect, use, and protect information provided through our campaign website at [yourwebsiteurl.com]. Your privacy is important to us.
+## Information you provide
 
-## Information We Collect
+The website links to a Google Form for consultation requests and home valuation inquiries. The form asks for your name, email address, whether you are buying or selling, and your preferred date and time; phone number and comments are optional. The form opens on Google's site, where Google collects and stores the responses for the form owner. Google's handling of form responses is subject to the [Google Privacy Policy](https://policies.google.com/privacy).
 
-When you submit feedback through our website, we collect:
-- Your full name
-- Your email address
-- Your phone number (if provided)
-- Your feedback topic and message
-- Whether you'd like to be contacted
+Email and telephone links open the email or phone application on your device. If you contact Amitabh that way, the information you provide is handled through your chosen communication service and may be retained as part of that conversation.
 
-## How We Use Your Information
+## Website and service providers
 
-We use the information you provide to:
-1. **Understand community concerns** - Your feedback helps us understand what matters to Ward 7 residents
-2. **Respond to your message** - If you request contact, we will respond to you
-3. **Improve our campaign** - Your insights help shape our priorities
-4. **Contact you about campaign updates** - Only if you opted in
+The website is configured to run on Cloudflare Workers. Cloudflare may process technical information, such as your IP address, browser and device details, requested pages, and request times, to deliver and operate the service. Cloudflare's handling and retention of this information are subject to its own policies.
 
-## We Will NOT:
-- Sell or share your information with third parties
-- Use your information for purposes outside this campaign
-- Add you to a mailing list without consent
-- Share your data with external organizations
+The page also loads fonts from Google Fonts and a home photograph from Unsplash. Those providers may receive technical connection information when your browser requests these resources. See the [Google Privacy Policy](https://policies.google.com/privacy) and [Unsplash Privacy Policy](https://unsplash.com/privacy).
 
-## Legal Basis
+Links to social networks open those services when selected. Their privacy policies apply to activity on their sites.
 
-We collect this information with your voluntary consent when you submit the feedback form.
+## Cookies and analytics
 
-## Data Security
+The site's code does not set cookies, use browser storage, or include an analytics service. Google Forms may use cookies or similar technologies when you visit or submit the form. The hosting provider may use technical measures needed to operate and monitor its infrastructure.
 
-Your information is stored securely. We take reasonable precautions to prevent unauthorized access, alteration, or disclosure.
+## Questions or requests
 
-## Your Rights
+For questions about this notice or information you have sent directly, contact:
 
-You have the right to:
-- Request what information we have about you
-- Ask for correction of inaccurate information
-- Request deletion of your information
-- Opt out of future contact
+**Email:** [info@amitabhsrivastava.ca](mailto:info@amitabhsrivastava.ca)
 
-## Contact Us
-
-To exercise your rights or ask questions about this privacy policy:
-
-**Email**: [your-email@example.com]  
-**Phone**: [Your Phone Number]  
-**Mailing Address**: [Your Campaign Address]
-
-## Changes to This Policy
-
-We may update this privacy policy as needed. Changes will be posted on this page with an updated date.
-
-## Compliance
-
-This policy complies with:
-- **PIPEDA** (Personal Information Protection and Electronic Documents Act) - Federal Canadian law
-- **Ontario's Freedom of Information and Protection of Privacy Act (FIPPA)**
-- **Municipal Campaign Advertising Rules**
-
-## Data Retention
-
-We retain your information for the duration of the campaign and up to 2 years after the election, as required by election law. You can request deletion anytime.
-
----
-
-**Note**: This is a template. Consult with a lawyer familiar with Ontario election law to ensure full compliance with all applicable regulations.
+This notice reflects the website's current features and service configuration. It should be reviewed whenever those change.
