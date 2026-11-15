@@ -30,7 +30,7 @@
                 <a href="#about">About</a>
                 <a href="#approach">My approach</a>
                 <a href="#contact">Contact</a>
-                <a class="nav-cta" href="tel:+19052671027">Call Amitabh <span aria-hidden="true">↗</span></a>
+                <a class="nav-cta" href="tel:+16478017000">Call Amitabh <span aria-hidden="true">↗</span></a>
             </nav>
         </div>
     </header>
@@ -42,7 +42,9 @@
                 <h1>A better move starts with a <em>conversation.</em></h1>
                 <p class="hero-intro">Whether you're finding your first home, making a change, or planning what's next, get thoughtful guidance for one of life's biggest decisions.</p>
                 <div class="hero-actions">
-                    <a class="button button-dark" href="mailto:info@amitabhsrivastava.ca?subject=Let's%20talk%20real%20estate">Let's talk <span aria-hidden="true">↗</span></a>
+                    <button class="button button-dark" type="button" data-contact-dialog-open aria-haspopup="dialog" aria-controls="contact-dialog">
+                        Let's talk <span aria-hidden="true">↗</span>
+                    </button>
                     <a class="text-link" href="#services">See how I can help <span aria-hidden="true">↓</span></a>
                 </div>
                 <p class="hero-note">Personal guidance. Clear next steps. No pressure.</p>
@@ -156,11 +158,34 @@
                 <div class="contact-details">
                     <p>No pressure and no need to have it all figured out. Tell me what's on your mind, and we'll take it from there.</p>
                     <a class="button button-light" href="mailto:info@amitabhsrivastava.ca?subject=Let's%20talk%20real%20estate">Email Amitabh <span aria-hidden="true">↗</span></a>
-                    <a class="contact-phone" href="tel:+19052671027">Or call <span>+1 (905) 267-1027</span></a>
+                    <a class="contact-phone" href="tel:+16478017000">Or call <span>+1 (647) 801-7000</span></a>
                 </div>
             </div>
         </section>
     </main>
+
+    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-description">
+        <div class="contact-dialog-heading">
+            <p class="eyebrow"><span class="eyebrow-line"></span> Get in touch</p>
+            <button class="dialog-close" type="button" data-contact-dialog-close aria-label="Close contact options">×</button>
+        </div>
+        <h2 id="contact-dialog-title">Let's talk about your next move.</h2>
+        <p id="contact-dialog-description">Choose whichever way works best for you.</p>
+        <div class="dialog-contact-options">
+            <a class="dialog-contact-option" href="mailto:info@amitabhsrivastava.ca?subject=Let's%20talk%20real%20estate">
+                <span class="dialog-option-label">EMAIL</span>
+                <strong>Email Amitabh</strong>
+                <span>info@amitabhsrivastava.ca</span>
+                <span class="dialog-option-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="dialog-contact-option" href="tel:+16478017000">
+                <span class="dialog-option-label">PHONE</span>
+                <strong>Call Amitabh</strong>
+                <span>+1 (647) 801-7000</span>
+                <span class="dialog-option-arrow" aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </dialog>
 
     <footer class="site-footer">
         <div class="footer-main">
@@ -174,7 +199,7 @@
             <p class="footer-location">Mississauga, Ontario<br>Serving clients across the GTA</p>
             <div class="footer-contact">
                 <a href="mailto:info@amitabhsrivastava.ca">info@amitabhsrivastava.ca</a>
-                <a href="tel:+19052671027">+1 (905) 267-1027</a>
+                <a href="tel:+16478017000">+1 (647) 801-7000</a>
             </div>
             <div class="social-links" aria-label="Social media">
                 <a href="https://www.facebook.com/amitabh7000" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a>
@@ -187,6 +212,7 @@
             <a href="#home">Back to top ↑</a>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
