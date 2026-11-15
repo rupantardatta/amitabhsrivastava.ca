@@ -28,3 +28,28 @@ if (menuToggle && primaryNav) {
 
 const year = document.querySelector("#current-year");
 if (year) year.textContent = String(new Date().getFullYear());
+
+const contactDialog = document.querySelector("#contact-dialog");
+const openContactDialog = document.querySelector("[data-contact-dialog-open]");
+const closeContactDialog = document.querySelector("[data-contact-dialog-close]");
+
+if (contactDialog && openContactDialog && closeContactDialog && "showModal" in contactDialog) {
+    openContactDialog.addEventListener("click", () => contactDialog.showModal());
+    closeContactDialog.addEventListener("click", () => contactDialog.close());
+
+    contactDialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        contactDialog.close();
+    });
+
+    contactDialog.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            event.preventDefault();
+            contactDialog.close();
+        }
+    });
+
+    contactDialog.addEventListener("click", (event) => {
+        if (event.target === contactDialog) contactDialog.close();
+    });
+}
