@@ -439,7 +439,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     modalButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
             const id = this.dataset.modal;
             openModal(id);
         });
