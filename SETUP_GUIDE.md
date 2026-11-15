@@ -1,173 +1,51 @@
-# Campaign Website - Quick Start Checklist
+# Site setup guide
 
-## 📋 Immediate Setup (Do First)
+This repository contains a static real-estate website for Amitabh Srivastava. The deployed site is served from `public/` using the Cloudflare Workers static assets configuration in `wrangler.jsonc`.
 
-- [ ] **Open the website locally**
-  - In VS Code: Right-click `index.html` → "Open with Live Server"
-  - Or: Double-click `index.html` in Finder
+## Preview on your computer
 
-- [ ] **Review all three files**
-  - `index.html` - Structure and content
-  - `styles.css` - Colors and styling
-  - `script.js` - Form handling
+1. Install Python 3, or use another static-file server.
+2. From the repository root, run:
 
-## ✏️ Customization (Required)
+   ```sh
+   python3 -m http.server 8000 --directory public
+   ```
 
-### 1. Basic Info (5 minutes)
-- [ ] Update candidate name (in logo - line 13)
-- [ ] Update page title (line 5 of HTML)
-- [ ] Add candidate name in hero section
-- [ ] Replace "Your Name" with actual name
+3. Open <http://localhost:8000>.
+4. Check the page at desktop and mobile widths. The fonts and hero image are loaded from external services, so they require an internet connection.
 
-### 2. About Section (15 minutes)
-- [ ] Write personal bio (replace template text)
-- [ ] Add years of real estate experience
-- [ ] Share why running for council
-- [ ] Keep it warm but professional
+## Edit site content
 
-### 3. Platform/Priorities (20 minutes)
-- [ ] Replace 6 generic platform cards with YOUR actual priorities
-- [ ] Make specific to Ward 7 issues
-- [ ] Keep descriptions concise (2-3 sentences each)
+- Update headings, copy, contact information, and links in `public/index.html`.
+- Adjust presentation and responsive layouts in `public/styles.css`.
+- Update navigation and contact-dialog behavior in `public/script.js`.
+- The portrait in `public/IMG_1443.JPG` is used in the About section.
 
-### 4. Contact Information (5 minutes)
-- [ ] Add email address (footer, line 141)
-- [ ] Add phone number (footer, line 142)
-- [ ] Add Facebook page link (line 147)
-- [ ] Add Twitter/X handle (line 148)
-- [ ] Add LinkedIn profile (line 149)
-- [ ] Update authorization statement (line 154)
+The consultation, buyer, and home-valuation links open the Google Form in a new tab; Google handles and stores submitted responses. Email and phone links are also available. If the form, data collected, or external resources change, update [PRIVACY_POLICY.md](./PRIVACY_POLICY.md) to match.
 
-### 5. Colors (Optional - 5 minutes)
-If you want to customize colors, edit `styles.css` lines 11-20:
-```css
---primary-color: #1e3a8a;      /* Main color - currently dark blue */
---secondary-color: #2d5a1e;    /* Accent - currently dark green */
---accent-color: #d97706;       /* Buttons - currently orange */
-```
+## Deploy to Cloudflare
 
-## 📧 Form Handling Setup
+1. Install Node.js and sign in to the Cloudflare account that owns the site.
+2. From the repository root, preview the Worker:
 
-### Option 1: Email Submissions (Easiest - FREE)
+   ```sh
+   npx wrangler@latest login
+   npx wrangler@latest dev
+   ```
 
-1. Go to https://formsubmit.co
-2. Enter your email address
-3. Copy the provided form code
-4. Replace form in `index.html` starting at line 99
+3. Deploy when the preview is ready:
 
-### Option 2: Store Feedback Locally (For Testing)
-- Forms save to browser storage
-- View in Console: type `viewCollectedFeedback()`
-- Good for testing, not for production
+   ```sh
+   npx wrangler@latest deploy
+   ```
 
-### Option 3: Netlify Forms (If hosting on Netlify)
-- Netlify handles forms automatically
-- Add `netlify` attribute to form tag
+The `assets.directory` setting in `wrangler.jsonc` points Wrangler to `public/`. Confirm that the Cloudflare account and domain are configured before deploying.
 
-## 🌐 Hosting Options
+## Before publishing changes
 
-### Option A: Free with GitHub Pages
-1. Push to GitHub repository
-2. Enable GitHub Pages in repo settings
-3. Website goes live automatically
-4. Form handling requires third-party service
-
-### Option B: Free with Netlify (RECOMMENDED)
-1. Connect GitHub repository
-2. Select `amitabhsrivastava.ca` folder
-3. Site goes live automatically
-4. Built-in form handling available
-5. Custom domain support
-
-### Option C: Traditional Web Hosting
-- Bluehost, SiteGround, etc.
-- More control but requires more setup
-- Cost: $2-10/month typically
-
-## 🚀 Deployment Steps
-
-1. **Get form emails working first** (test locally)
-2. **Choose a hosting platform** (Netlify recommended)
-3. **Deploy the website**
-4. **Get a domain name** (optional but recommended)
-5. **Test everything in production**
-6. **Share the link!**
-
-## 🧪 Testing Checklist
-
-Before going live:
-- [ ] Test feedback form (submit a test entry)
-- [ ] Check on mobile phone
-- [ ] Check on tablet
-- [ ] Test all navigation links
-- [ ] Verify contact info is correct
-- [ ] Check spelling and grammar
-- [ ] Verify images load (if added)
-- [ ] Test on different browsers
-
-## 📱 Mobile Testing
-
-Open website on:
-- [ ] iPhone/iPad
-- [ ] Android phone
-- [ ] Desktop
-- Verify everything looks good
-
-## 🔒 Before Going Public
-
-- [ ] Add proper campaign authorization in footer
-- [ ] Ensure email form is working
-- [ ] Add privacy policy (link in footer)
-- [ ] Set up Google Analytics (optional)
-- [ ] Test from different networks
-- [ ] Have someone else review it
-
-## 📊 After Launch
-
-- [ ] Share on social media
-- [ ] Add website to campaign materials
-- [ ] Create QR code linking to website
-- [ ] Monitor feedback submissions
-- [ ] Respond to messages quickly
-- [ ] Update content regularly
-- [ ] Track website analytics
-
-## 🆘 Common Issues & Solutions
-
-**Issue**: Form doesn't submit
-- Solution: Check email is correctly configured, test in different browser
-
-**Issue**: Website looks weird on mobile
-- Solution: Check browser zoom, try different orientation
-
-**Issue**: Links don't work
-- Solution: Verify href values match section IDs (check # links)
-
-**Issue**: Page loads slowly
-- Solution: Check for large image files, optimize images
-
-## 📞 Support Resources
-
-- **HTML Help**: https://developer.mozilla.org/en-US/docs/Web/HTML
-- **CSS Help**: https://developer.mozilla.org/en-US/docs/Web/CSS
-- **Netlify Docs**: https://docs.netlify.com
-- **FormSubmit Docs**: https://formsubmit.co
-
-## ✅ Final Checklist Before Launch
-
-- [ ] All candidate information is accurate and up-to-date
-- [ ] Contact information is correct and monitored
-- [ ] Form submissions are being received
-- [ ] Website looks good on all devices
-- [ ] No broken links or typos
-- [ ] Social media links are correct
-- [ ] Mobile responsiveness is confirmed
-- [ ] Loading speed is acceptable
-- [ ] Campaign authorization statement is included
-- [ ] Privacy policy is available (if collecting feedback)
-
----
-
-**Remember**: This is a professional representation of your campaign. Keep it updated and respond to feedback promptly. A well-maintained website builds trust with voters!
-
-**Ready to go live?** 🎉
+- Verify all contact details and social links.
+- Confirm “Amitabh Srivastava, Real Estate Salesperson” and “REBEST REALTY INC. Brokerage” appear prominently in the header/hero and footer.
+- Confirm the Google Form is accepting responses and its questions are current.
+- Check the layout at desktop and mobile widths.
+- Confirm the About portrait and external hero image load.
+- Review the privacy notice if any data collection, analytics, or third-party resources have changed.
